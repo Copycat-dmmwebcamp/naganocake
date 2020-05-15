@@ -1,0 +1,23 @@
+
+ja:
+  enums:
+    order:
+      order_status:
+        stage0: 入金待ち
+        stage1: 入金確認
+        stage2: 製作中
+        stage3: 発送準備中
+        stage4: 発送済み
+      payment_info:
+        credit: クレジットカード
+        bank: 銀行払い
+    item:
+      item_status:
+        selling: 販売中
+        soldout: 売り切れ
+    order_item:
+      production_status:
+        status0: 着手不可
+        status1: 製作待ち
+        status2: 製作中
+        status3: 製作完了
