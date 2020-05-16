@@ -1,0 +1,38 @@
+<h2>ジャンル一覧・追加</h2>
+
+<!-- resourcesが生成してくれたroutesだと単数形なのでurl:で複数形のroutesを指定する -->
+<%= form_for @category, url: admins_categories_path do |f| %>
+	ジャンル名
+    <%= f.text_field :name %>
+    <%= f.radio_button :category_status, :enable, checked: true %>
+    <%= f.label :category_status_enable, "有効" %>
+    <%= f.radio_button :category_status, :disable %>
+    <%= f.label :category_status_disable, "無効" %>
+    <%= f.submit '追加' %>
+<% end %>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>ジャンル</th>
+			<th>状態</th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @categories.each do |category| %>
+		<tr>
+			<td><%= category.name %></td>
+			<td>
+				<% if category.category_status == true %>
+					有効
+				<% elsif category.category_status == false %>
+					無効
+				<% end %>
+			</td>
+			<td><%= link_to '編集する', edit_admins_category_path(category), class: "btn-sm btn-success edit_admins_category_#{category.id}" %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
