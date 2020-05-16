@@ -65,3 +65,4 @@ gem 'devise'
 
 gem 'enum_help'
 # enumの日本語化
+
