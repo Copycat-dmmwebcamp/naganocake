@@ -10,3 +10,10 @@ Admin.create!(
    email: 'test@test.com',
    password: 'testtest',
 )
+Category.create!(
+	name: 'ケーキ',
+)
+
+Category.create!(
+	name: 'プリン・ゼリー',
+)

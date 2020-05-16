@@ -1,0 +1,30 @@
+<div class="body">
+  <div class="container">
+	   <div class="row">
+         <%= link_to '商品追加',  new_admins_item_path %>
+          <table>
+             <caption>商品一覧</caption>
+             <thead>
+              <tr>
+                 <th>商品id</th>
+                 <th>商品名</th>
+                 <th>税抜価格</th>
+                 <th>ジャンル</th>
+                 <th>ステータス</th>
+              </tr>
+             </thead>
+             <tbody>
+              <% @items.each do |item| %>
+                <tr>
+                      <td><%= item.id %></td>
+                      <td><%= link_to item.item_name, admins_item_path(item.id) %></td>
+                      <td><%= item.without_tax %></td>
+                      <td><%= Category.find(item.category_id).name %></td>
+                      <td><%= item.item_status_i18n %></td>
+                </tr>
+              <% end %>
+             </tbody>
+        　</table> 
+     </div>
+  </div>
+</div>
