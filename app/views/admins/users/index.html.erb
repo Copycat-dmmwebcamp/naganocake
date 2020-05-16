@@ -1,0 +1,31 @@
+<h2>会員一覧</h2>
+<table>
+ <thead>
+  <tr>
+   <th>会員ID</th>
+   <th>氏名</th>
+   <th>メールアドレス</th>
+   <th>ステータス</th>
+  </tr>
+ </thead>
+ <tbody>
+  <% @users.each do |user| %>
+  <tr>
+   <td><%= user.id %></td>
+   <td>
+   	   <%= link_to admins_user_path(user.id) do %>
+       <%= user.family_name_kanji %><%= user.first_name_kanji %>
+   	   <% end %>
+   </td>
+   <td><%= user.email %></td>
+   <td>
+   	   <% if user.user_status == true %>
+       <p>有効会員</p>
+       <% elsif user.user_status == false %>
+       <p>退会済み</p>
+       <% end %>
+   </td>
+  </tr>
+  <% end %>
+ </tbody>
+</table>
