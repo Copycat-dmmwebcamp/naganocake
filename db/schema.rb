@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
-ActiveRecord::Schema.define(version: 2020_05_16_121113) do
-
-
+ActiveRecord::Schema.define(version: 2020_05_16_124305) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -109,8 +105,8 @@ ActiveRecord::Schema.define(version: 2020_05_16_121113) do
     t.integer "billing_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "order_status", limit: 5
     t.integer "end_user_id"
+    t.integer "order_status", limit: 5
     t.index ["end_user_id"], name: "index_orders_on_end_user_id"
   end
 
