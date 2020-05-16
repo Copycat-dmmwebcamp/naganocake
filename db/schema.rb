@@ -11,7 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
+
 ActiveRecord::Schema.define(version: 2020_05_16_121113) do
+
 
 
   create_table "admins", force: :cascade do |t|
@@ -76,13 +78,13 @@ ActiveRecord::Schema.define(version: 2020_05_16_121113) do
   create_table "items", force: :cascade do |t|
     t.string "item_name"
     t.string "without_tax"
-    t.string "item_image"
     t.text "item_explanation"
     t.integer "item_status"
     t.boolean "recomend", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category_id"
+    t.string "item_image_id"
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 

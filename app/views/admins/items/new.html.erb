@@ -1,0 +1,41 @@
+
+<div class="body">
+  <div class="container">
+	   <div class="row">
+	    <h2>商品新規登録</h2>	
+         <%= form_for(@item_new, url: admins_items_path) do |f| %>
+         
+          <%= f.attachment_field :item_image %>
+
+         	<div>
+         		<%= f.label :商品名 %>
+         		<%= f.text_field :item_name %>
+         	</div>
+         
+         	<div>
+         		<%= f.label :商品説明 %> 
+         		<%= f.text_field :item_explanation %>
+         	</div>
+
+         	<div>
+         		<%= f.label :ジャンル %> 
+         		<%= f.collection_select :category_id, Category.all, :id, :name, :include_blank => '選択してください' %>
+         	</div>
+
+         	<div>
+         		<%= f.label :税抜価格 %> 
+         		<%= f.text_field :without_tax %>
+         	</div>
+
+         	<div class="field">
+                <%= f.label :販売ステータス %>
+                <%= f.select :item_status, Item.item_statuses.keys.map {|k| [I18n.t("enums.item.item_status.#{k}"), k]} %>
+            </div>
+         
+         	<div>
+         		<%= f.submit "新規登録" %>
+         	</div>
+         <% end %>
+       </div>
+   </div>
+</div>
