@@ -10,6 +10,48 @@
   </head>
 
   <body>
+    <!-- ヘッダー部分 -->
+    <header>
+      <h1>長野ケーキ(仮)</h1>
+      <nav>
+        <ul>
+          <!-- 会員ログイン後 -->
+          <% if end_user_signed_in? %>
+            <li>ようこそ、　<%= current_end_user.family_name_kanji %><%= current_end_user.first_name_kanji %>　さん！</li>
+            <li><%= link_to "マイページ", new_end_users_user_path %></li>
+            <li><%= link_to "商品一覧", end_users_items_path %></li>
+            <li><%= link_to "カート", end_users_carts_path %></li>
+            <li><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %></li>
+
+          <!-- 管理者ログイン後 -->
+          <% elsif admin_signed_in? %>
+            <li><%= link_to "商品一覧", admins_items_path %></li>
+            <li><%= link_to "会員一覧", admins_users_path %></li>
+            <li><%= link_to "注文履歴一覧", admins_order_histories_path %></li>
+            <li><%= link_to "ジャンル一覧", admins_categories_path %></li>
+            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+
+            <!-- 検索機能 -->
+            <%= form_tag(admins_items_path, :method => 'get') do %>
+    　　　　　　　<%= text_field_tag :search %>
+    　　　　　　　<%= submit_tag 'Search' %>
+　　　　　　　<% end %>
+
+          <!-- 非ログイン -->
+          <% else %>
+            <li><%= link_to "商品一覧", end_users_items_path %></li>
+            <li><%= link_to "新規登録", new_end_user_registration_path %></li>
+            <li><%= link_to "ログイン", new_end_user_session_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+
     <%= yield %>
+    <!-- フッター部分 -->
+    <footer>
+      <p>フッター(仮)</p>
+    </footer>
+
   </body>
 </html>
