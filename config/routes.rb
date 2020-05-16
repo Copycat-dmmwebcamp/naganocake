@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   devise_for :admins, controllers: {
     sessions: "admins/sessions",
     registrations: "admins/registrations",
@@ -32,34 +30,34 @@ Rails.application.routes.draw do
 
 
   devise_for :end_users, controllers: {
-    sessions: "end_user/sessions",
-    registrations: "end_user/registrations",
-    passwords: "end_user/passwords",
+    sessions: "end_users/sessions",
+    registrations: "end_users/registrations",
+    passwords: "end_users/passwords",
   }
   # 顧客側/商品
-   namespace :end_user do
+   namespace :end_users do
     resources :items
    end
 
    # 顧客側/カート
-   namespace :end_user do
+   namespace :end_users do
     resources :carts
    end
 
    # 顧客側/注文関連
-   namespace :end_user do
+   namespace :end_users do
    	resources :orders
 	    get 'orders/confirm'
 	    get 'orders/history'
 	    get 'orders/:id/history_show' => 'orders#history_show', as: 'orders_history_show'
    end
 	# 顧客側/ユーザー関連
-   namespace :end_user do
+   namespace :end_users do
    	resources :users
 	    get 'users/:id/leave' => 'users#leave', as: 'users_leave'
    end
    # 顧客側/配送先
-   namespace :end_user do
+   namespace :end_users do
     resources :deliveries
    end
 

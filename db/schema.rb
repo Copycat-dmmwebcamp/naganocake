@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 2020_05_15_114327) do
     t.string "postal_code"
     t.string "address"
     t.string "phone_number"
-    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "user_status", default: true, null: false
@@ -106,9 +105,9 @@ ActiveRecord::Schema.define(version: 2020_05_15_114327) do
     t.integer "billing_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "end_user_id_id"
+    t.integer "end_user_id"
     t.integer "order_status", limit: 5
-    t.index ["end_user_id_id"], name: "index_orders_on_end_user_id_id"
+    t.index ["end_user_id"], name: "index_orders_on_end_user_id"
   end
 
 end

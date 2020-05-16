@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class EndUser::ConfirmationsController < Devise::ConfirmationsController
+class EndUsers::ConfirmationsController < Devise::ConfirmationsController
   # GET /resource/confirmation/new
   # def new
   #   super
