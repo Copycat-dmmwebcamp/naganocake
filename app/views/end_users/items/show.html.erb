@@ -23,6 +23,11 @@
                 <% tax_include = @item.without_tax.to_i * 1.1  %>
                 <%= tax_include.round   %>
             </div>
+            <div>
+                <% if  @item.item_status == 'soldout' %>
+                売り切れ中です
+                <% end %>
+            </div>
         <div>
 
        </div>
