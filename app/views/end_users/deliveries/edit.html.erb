@@ -1,0 +1,11 @@
+<h1>edit画面</h1>
+
+<%= form_for @delivery_place, url: end_users_delivery_path do |f| %>
+    <%= f.label :name, "郵便番号(ハイフンなし)" %>
+    <%= f.text_field :postal_code %><br>
+    <%= f.label :name, "住所"  %>
+    <%= f.text_field :address %><br>
+    <%= f.label :name, "宛名"  %>
+    <%= f.text_field :destination %>
+    <%= f.submit '編集する' %>
+<% end %>

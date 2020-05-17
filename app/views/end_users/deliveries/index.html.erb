@@ -1,2 +1,36 @@
-<h1>EndUsers::Deliveries#index</h1>
-<p>Find me in app/views/end_users/deliveries/index.html.erb</p>
+<h2>配送先登録/一覧</h2>
+
+<%= form_for @delivery_place, url: end_users_deliveries_path do |f| %>
+    <%= f.label :name, "郵便番号(ハイフンなし)" %>
+    <%= f.text_field :postal_code %><br>
+    <%= f.label :name, "住所"  %>
+    <%= f.text_field :address %><br>
+    <%= f.label :name, "宛名"  %>
+    <%= f.text_field :destination %>
+    <%= f.submit '登録する' %>
+<% end %>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>郵便番号</th>
+			<th>住所</th>
+			<th>宛名</th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @delivery_places.each do |delivery_place| %>
+		<% if delivery_place.end_user_id == current_end_user.id %>
+		<tr>
+			<td><%= delivery_place.postal_code %></td>
+			<td><%= delivery_place.address %></td>
+			<td><%= delivery_place.destination %></td>
+			<td><%= link_to '編集する', edit_end_users_delivery_path(delivery_place), class: "btn-sm btn-success edit_end_users_delivery_#{delivery_place.id}" %></td>
+			<td><%= link_to '削除する', end_users_delivery_path(delivery_place), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_end_users_delivery_#{delivery_place.id}" %></td>
+		</tr>
+		<% end %>
+		<% end %>
+	</tbody>
+</table>
