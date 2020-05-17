@@ -4,10 +4,10 @@
 <%= form_for @category, url: admins_categories_path do |f| %>
 	ジャンル名
     <%= f.text_field :name %>
-    <%= f.radio_button :category_status, :enable, checked: true %>
-    <%= f.label :category_status_enable, "有効" %>
-    <%= f.radio_button :category_status, :disable %>
-    <%= f.label :category_status_disable, "無効" %>
+    <%= f.radio_button :category_status, :true, checked: true %>
+    <%= f.label :category_status_true, "有効" %>
+    <%= f.radio_button :category_status, :false %>
+    <%= f.label :category_status_false , "無効" %>
     <%= f.submit '追加' %>
 <% end %>
 
