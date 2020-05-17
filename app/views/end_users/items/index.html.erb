@@ -1,2 +1,39 @@
-<h1>EndUsers::Items#index</h1>
-<p>Find me in app/views/end_users/items/index.html.erb</p>
+<div class="body">
+  <div class="container">
+       <div class="row">
+
+       		 <div>
+        　　　<h2>ジャンル検索</h2>
+				<%= render "end_users/items/categories", categories: @categories %>
+　　　　　　	</div>
+	
+       	    <% if @id == 0 %>
+       	    	<h2>商品一覧</h2><h4>全<%= @items.count %>件</h4>
+       	    <% else %>
+       	    	<h2><%= @category.name %>一覧 </h2><h4>全<%= @items.count %>件</h4>
+       	    <% end %>
+
+       	    <% @items.each do |item| %>
+       	    	<div>
+       				 <div>
+                        <%= attachment_image_tag(item, :item_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %>
+                    </div>
+                    <div>
+                        <span>商品名</span>
+                        <%= item.item_name %>
+                    </div>
+                    <div>
+                         <span>価格</span> 
+                        <% tax_include = item.without_tax.to_i * 1.1  %>
+                        <%= tax_include.round   %>
+                    </div>
+                    <div>
+                    	<% if  item.item_status == 'soldout' %>
+                    	 売り切れ
+                    	<% end %>
+                    </div>
+       			</div>
+       		<% end %>
+       </div>
+   </div>
+</div>
