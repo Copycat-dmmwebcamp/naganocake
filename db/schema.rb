@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_16_124305) do
+ActiveRecord::Schema.define(version: 2020_05_17_070702) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,13 +25,13 @@ ActiveRecord::Schema.define(version: 2020_05_16_124305) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "end_user_id"
     t.integer "item_id"
     t.integer "item_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["end_user_id"], name: "index_cart_items_on_end_user_id"
     t.index ["item_id"], name: "index_cart_items_on_item_id"
-    t.index ["user_id"], name: "index_cart_items_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -42,13 +42,13 @@ ActiveRecord::Schema.define(version: 2020_05_16_124305) do
   end
 
   create_table "delivery_places", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "end_user_id"
     t.string "postal_code"
     t.string "address"
     t.string "destination"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_delivery_places_on_user_id"
+    t.index ["end_user_id"], name: "index_delivery_places_on_end_user_id"
   end
 
   create_table "end_users", force: :cascade do |t|
@@ -106,8 +106,10 @@ ActiveRecord::Schema.define(version: 2020_05_16_124305) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "order_status", limit: 5
+
     t.integer "end_user_id"
     t.index ["end_user_id"], name: "index_orders_on_end_user_id"
+    
   end
 
 end
