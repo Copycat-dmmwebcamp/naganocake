@@ -11,13 +11,23 @@
 
   <body>
     <!-- ヘッダー部分 -->
-    <header>
-      <h1>長野ケーキ(仮)</h1>
-      <nav>
-        <ul>
+    <nav class="navbar navbar-inverse" style="background-color: #000000">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gnavi">
+          <span class="sr-only">メニュー</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <h1 class="rogo">Nagano Cake</h1>
+      </div>
+
+
+      <nav id="gnavi" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
           <!-- 会員ログイン後 -->
           <% if end_user_signed_in? %>
-            <li>ようこそ、　<%= current_end_user.family_name_kanji %><%= current_end_user.first_name_kanji %>　さん！</li>
+            <li class="user">ようこそ、　<%= current_end_user.family_name_kanji %><%= current_end_user.first_name_kanji %>　さん！</li>
             <li><%= link_to "マイページ", new_end_users_user_path %></li>
             <li><%= link_to "商品一覧", end_users_items_path %></li>
             <li><%= link_to "カート", end_users_carts_path %></li>
@@ -32,10 +42,12 @@
             <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
 
             <!-- 検索機能 -->
-            <%= form_tag(admins_items_path, :method => 'get') do %>
-    　　　　　　　<%= text_field_tag :search %>
-    　　　　　　　<%= submit_tag 'Search' %>
-　　　　　　　<% end %>
+            <div class="text-right" style="margin-right: 20px; padding-bottom: 5px ">
+              <%= form_tag(admins_items_path, :method => 'get') do %>
+                <%= text_field_tag :search %>
+                <%= submit_tag 'Search' %>
+              <% end %>
+            </div>
 
           <!-- 非ログイン -->
           <% else %>
@@ -45,12 +57,12 @@
           <% end %>
         </ul>
       </nav>
-    </header>
+    </nav>
+
 
     <%= yield %>
     <!-- フッター部分 -->
-    <footer>
-      <p>フッター(仮)</p>
+    <footer class="navbar navbar-inverse" style="background-color: #000000">
     </footer>
 
   </body>

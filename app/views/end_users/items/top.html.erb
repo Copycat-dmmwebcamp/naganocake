@@ -1,0 +1,38 @@
+
+<div class="body">
+  <div class="container">
+       <div class="row">
+
+       		<div>
+        　　　<h2>ジャンル検索</h2>
+				<%= render "end_users/items/categories", categories: @categories %>
+			</div>
+
+			<div>
+				<h2>ようこそ、NaganoCakeへ！このサイトは、ケーキ販売のECサイトになります。会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。</h2>
+			</div>
+
+			<div>
+				<% count = 0 %>
+				<% @items.each do |item| %>
+ 				<% if count < 4 %> 
+				<div>
+    			<%= attachment_image_tag(item, :item_image, :fill, 100, 100,　allback: "no-image-mini.jpg") %>
+    			</div>
+    			<div>
+    				<span>商品名</span>
+    				<td><%= link_to item.item_name, end_users_item_path(item.id) %></td>
+    			</div>
+    			<div>
+    				<span>価格</span>
+    				<% tax_include = item.without_tax.to_i * 1.1  %>
+    				<h5>¥ <%= tax_include.round %></h5>
+    			</div>
+    			<% count = count + 1 %>
+    			<% end %>
+    		<% end %>
+    	</div>
+       </div>
+   </div>
+</div>
+

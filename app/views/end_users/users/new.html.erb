@@ -1,0 +1,34 @@
+<h2>マイページ</h2>
+
+<h3>登録情報</h3>
+
+<%= link_to "編集する", edit_end_users_user_path(current_end_user.id) %>
+
+<table>
+	<thead>
+		<tr>
+			<th>氏名</th>
+			<th>カナ</th>
+			<th>郵便番号</th>
+			<th>住所</th>
+			<th>電話番号</th>
+			<th>メールアドレス</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= current_end_user.family_name_kanji %><%= current_end_user.first_name_kanji %></td>
+			<th><%= current_end_user.family_name_kana %><%= current_end_user.first_name_kana %></th>
+			<th><%= current_end_user.postal_code %></th>
+			<th><%= current_end_user.address %></th>
+			<th><%= current_end_user.phone_number %></th>
+			<th><%= current_end_user.email %></th>
+		</tr>
+	</tbody>
+</table>
+
+
+<h3>配送先</h3>
+<%= link_to "一覧を見る", end_users_deliveries_path(current_end_user.id) %>
+<h3>注文履歴</h3>
+<%= link_to "一覧を見る", end_users_orders_history_path(current_end_user.id) %>
