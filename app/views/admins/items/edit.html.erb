@@ -2,7 +2,7 @@
 <div class="body">
   <div class="container">
        <div class="row">
-        <h2>商品新規登録</h2> 
+        <h2>商品編集</h2> 
          <%= form_for(@item, url: admins_item_path) do |f| %>
          
             <%= f.attachment_field :item_image %>
@@ -27,6 +27,14 @@
                 <%= f.label :販売ステータス %>
                 <%= f.select :item_status, Item.item_statuses.keys.map {|k| [I18n.t("enums.item.item_status.#{k}"), k]} %>
             </div>
+
+             <div>
+              <%= f.label :おすすめ商品 %>
+              <%= f.radio_button :recomend, :true %>
+               <%= f.label :recomend_true, "有効" %>
+               <%= f.radio_button :recomend, :false %>
+               <%= f.label :recomend_false, "無効" %>
+             </div>   
          
             <div>
                 <%= f.submit "変更を保存" %>

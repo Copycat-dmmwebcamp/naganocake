@@ -36,8 +36,11 @@ Rails.application.routes.draw do
   }
   # 顧客側/商品
    namespace :end_users do
+    get 'items/search'
     resources :items
    end
+   # エンドユーザー側のトップ画面
+   get '/' => 'end_users/items#top', as: 'root'
 
    # 顧客側/カート
    namespace :end_users do

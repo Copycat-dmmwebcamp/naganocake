@@ -11,6 +11,7 @@
                  <th>税抜価格</th>
                  <th>ジャンル</th>
                  <th>ステータス</th>
+                 <th>おすすめ商品</th>
               </tr>
              </thead>
              <tbody>
@@ -21,6 +22,13 @@
                       <td><%= item.without_tax %></td>
                       <td><%= Category.find(item.category_id).name %></td>
                       <td><%= item.item_status_i18n %></td>
+                      <td>
+                       <% if item.recomend == true %>
+                        有効
+                       <% elsif item.recomend == false %>
+                        無効
+                       <% end %>
+                       </td>
                 </tr>
               <% end %>
              </tbody>
