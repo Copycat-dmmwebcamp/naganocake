@@ -1,15 +1,19 @@
-<h2>Log in</h2>
+<h4>会員の方はこちらからログイン</h4>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :パスワード %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
+
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <%= link_to "=>パスワードを忘れた方はこちら", new_password_path(resource_name) %><br />
+<% end %>
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
@@ -19,8 +23,8 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class: "btn btn-primary" %>
   </div>
 <% end %>
-
-<%= render "end_users/shared/links" %>
+<h4>登録がお済みでない方</h4>
+<%= render "end_users/shared/links" %> から新規登録を行ってください。
