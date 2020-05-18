@@ -3,8 +3,10 @@
   <div class="container">
 	   <div class="row">
 	    <h2>商品新規登録</h2>	
+
+
          <%= form_for(@item_new, url: admins_items_path) do |f| %>
-         
+ 
           <%= f.attachment_field :item_image %>
 
          	<div>

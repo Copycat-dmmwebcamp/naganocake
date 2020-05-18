@@ -21,3 +21,23 @@ ja:
         status1: 製作待ち
         status2: 製作中
         status3: 製作完了
+  activerecord:
+    errors:
+      models:
+        admin:
+          attributes:
+            email:
+              blank: "が入力されていません"
+              taken: "は既に登録されています"
+              invalid: "は無効です"
+            password:
+              blank: "が入力されていません"
+              too_short: "が短すぎます"
+            password_confirmation:
+              confirmation: "と Password が一致しません"
+  devise:
+    failure:
+      admin:
+        invalid: "情報を入力してください"
+        not_found_in_database: "登録情報と一致しません"
+        unauthenticated: "未認証"

@@ -1,5 +1,8 @@
 class Admins::ItemsController < ApplicationController
 
+  # このコントローラが動作する前に実行、admin側でログイン認証できていなければadmin側のログイン画面へ
+  before_action :authenticate_admin!
+
 	def index
 		@items = Item.all
 	end
@@ -12,6 +15,9 @@ class Admins::ItemsController < ApplicationController
 		@item = Item.new(item_params)
 		if @item.save
 			redirect_to admins_items_path, notice: "successfully created book!"
+		else
+			@item_new = Item.new
+			render "new"
 		end
 	end
 
