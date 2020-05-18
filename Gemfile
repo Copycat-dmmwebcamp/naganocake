@@ -70,4 +70,3 @@ gem 'enum_help'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
-
