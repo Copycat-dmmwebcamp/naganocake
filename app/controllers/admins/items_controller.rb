@@ -15,9 +15,6 @@ class Admins::ItemsController < ApplicationController
 		@item = Item.new(item_params)
 		if @item.save
 			redirect_to admins_items_path, notice: "successfully created book!"
-		else
-			@item_new = Item.new
-			render "new"
 		end
 	end
 
