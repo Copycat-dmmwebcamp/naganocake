@@ -1,0 +1,51 @@
+<div class="body">
+  <div class="container">
+       <div class="row">
+
+  		<%= form_for(@order, url: end_users_orders_confirm_path ) do |f| %>
+  			<!-- 支払方法選択 -->
+  			<div>
+  				<span>支払い方法</span><br>
+  			<%= f.collection_radio_buttons(:payment_info, Order.payment_infos_i18n, :first, :second )%>
+			</div>
+			<div>
+  				<span>お届け先</span><br>
+  				<div>
+  					<span>ご自身の住所</span><br>
+  					<%= f.radio_button :postage, :'0' %>
+  					<%= @end_user.postal_code + @end_user.address + @end_user.full_name_kanji %>
+  				</div>
+
+  				<div>
+  					<span>登録済住所から選択</span><br>
+  					<%= f.radio_button :postage, :'1' %>
+  				<%= f.label :origin_id %>
+  				<!-- postal_codeに選択されたdelivery_place.idを入れてコントローラーに送る-->
+  				<%= f.collection_select :billing_amount, @delivery_places.all, :id, :full_info %>
+  				</div>
+
+  				<div>
+  					<span>新しいお届け先</span><br>
+  					<!-- 以下値をコントローラーに送るフォーム -->
+  					<%= f.radio_button :postage, :'2' %>
+  						<%= f.label :postal_code %>
+  						<%= f.text_field :postal_code %>
+
+  						<%= f.label :delivery_address %>
+  						<%= f.text_field :delivery_address %>
+
+  						<%= f.label :destination %>
+  						<%= f.text_field :destination %>
+  				</div>
+  				
+
+                
+			</div>
+
+			<%= f.submit "確認画面へ進む" %>
+			
+  		<% end %>
+
+       </div>
+   </div>
+</div>       	

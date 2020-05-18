@@ -10,7 +10,7 @@ ja:
         stage4: 発送済み
       payment_info:
         credit: クレジットカード
-        bank: 銀行払い
+        bank: 銀行振込
     item:
       item_status:
         selling: 販売中
