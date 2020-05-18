@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ @font-face {
+  font-family: 'Rogo';
+  src: asset_url('BraxtonDemo-Regular.ttf') format('truetype');
+}
+
+.rogo {
+  font-family: 'Rogo';
+  color: white;
+  margin-left: 30px;
+}
