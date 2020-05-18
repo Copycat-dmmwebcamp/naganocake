@@ -11,5 +11,4 @@ Admin.create!(
    password: 'testtest',
 )
 
-=======
 
