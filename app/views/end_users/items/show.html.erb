@@ -1,0 +1,35 @@
+<div class="body">
+  <div class="container">
+       <div class="row">
+        <h2>商品詳細</h2> 
+          	<div>
+				<%= render "end_users/items/categories", categories: @categories %>
+			</div>
+
+			<div>
+            <%= attachment_image_tag(@item, :item_image, :fill, 300, 300, fallback: "no-image-mini.jpg") %>
+            </div>
+		  <div>
+            <span>商品名</span>
+               <%= @item.item_name %>
+           </div>
+			<div>
+             	<span>商品説明</span>
+                <%= @item.item_explanation %>
+            </div>
+
+            <div>
+                <span>価格</span> 
+                <% tax_include = @item.without_tax.to_i * 1.1  %>
+                <%= tax_include.round   %>
+            </div>
+            <div>
+                <% if  @item.item_status == 'soldout' %>
+                売り切れ中です
+                <% end %>
+            </div>
+        <div>
+
+       </div>
+   </div>
+</div>

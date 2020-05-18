@@ -1,0 +1,8 @@
+<div>
+	<% categories.each do |category| %>
+	<% if category.category_status == true %>
+　　　　　　<%= link_to category.name, end_users_items_search_path(category_id: category.id) %>
+　　 <% end %>
+	<% end %>
+
+</div>

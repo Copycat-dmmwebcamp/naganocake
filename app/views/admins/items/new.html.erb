@@ -31,7 +31,13 @@
                 <%= f.label :販売ステータス %>
                 <%= f.select :item_status, Item.item_statuses.keys.map {|k| [I18n.t("enums.item.item_status.#{k}"), k]} %>
             </div>
-         
+            <div>
+                <%= f.label :おすすめ商品 %>
+                <%= f.radio_button :recomend, :true %>
+                <%= f.label :recomend_true, "有効" %>
+                <%= f.radio_button :recomend, :false, checked: true %>
+                <%= f.label :recomend_false, "無効" %>
+             </div>     
          	<div>
          		<%= f.submit "新規登録" %>
          	</div>

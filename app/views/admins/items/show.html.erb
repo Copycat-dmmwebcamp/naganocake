@@ -26,6 +26,14 @@
                         <span>販売ステータス</span>
                         <%= @item.item_status_i18n %>
                     </div>
+                    <div>
+                        <span>おすすめ商品</span>
+                        <% if @item.recomend == true %>
+                        有効
+                       <% elsif @item.recomend == false %>
+                        無効
+                       <% end %>
+                    </div>
 
                     <%= link_to '編集する', edit_admins_item_path(@item.id) %>
        </div>
