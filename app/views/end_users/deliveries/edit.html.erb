@@ -1,11 +1,25 @@
-<h1>edit画面</h1>
+<h2>配送先編集</h2>
 
 <%= form_for @delivery_place, url: end_users_delivery_path do |f| %>
-    <%= f.label :name, "郵便番号(ハイフンなし)" %>
-    <%= f.text_field :postal_code %><br>
-    <%= f.label :name, "住所"  %>
-    <%= f.text_field :address %><br>
-    <%= f.label :name, "宛名"  %>
-    <%= f.text_field :destination %>
-    <%= f.submit '編集する' %>
+	<table>
+		<tbody>
+			<tr>
+				<td><%= f.label :name, "郵便番号(ハイフンなし)" %></td>
+				<td><%= f.text_field :postal_code %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :name, "住所"  %></td>
+				<td><%= f.text_field :address, :size=>"60" %></td>
+			</tr>
+			<tr>
+				<td><%= f.label :name, "宛名"  %></td>
+				<td><%= f.text_field :destination %></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td><%= f.submit '登録する', class: "btn btn-success btn-lg" %></td>
+			</tr>
+		</tbody>
+	</table>
 <% end %>
