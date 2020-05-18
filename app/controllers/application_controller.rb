@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
 before_action :configure_permitted_parameters, if: :devise_controller?
 
+#退会済みユーザーがログインできなくする
+before_action :reject_user, only: [:create]
 
 
 
@@ -8,12 +10,23 @@ before_action :configure_permitted_parameters, if: :devise_controller?
 protected
 
   def after_sign_in_path_for(resource)
+    	end_users_items_path
+
+  end
+
+
+  def after_sign_out_path_for(resource)
     end_users_items_path
   end
 
-  
-  def after_sign_out_path_for(resource)
-    end_users_items_path
+#退会済みユーザーがログインできなくする
+  def reject_user
+   if end_user_signed_in?
+    if current_end_user.user_status == false
+       sign_out
+       redirect_to new_end_user_session_path
+    end
+   end
   end
 
   def configure_permitted_parameters
