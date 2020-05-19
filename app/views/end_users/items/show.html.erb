@@ -35,10 +35,16 @@
 </div>
 <div>
   <% if end_user_signed_in? %>
-    <%= form_for(@cart_item, url:end_users_carts_path) do |f| %>
-    <%= f.hidden_field :item_id, value: @item.id %>
-    <%= f.hidden_field :user_id, value: current_end_user.id %>
-    <%= f.select :item_number, [1,2,3,4,5,6,7,8,9,10],{} %>
-    <%= f.submit "カートに入れる" %>
-  <% end %>
+    <% @cart_items = CartItem.where(end_user_id: current_end_user.id, item_id: @item.id) %>
+    <% if @cart_items.empty?  %>
+        <%= form_for(@cart_item, url:end_users_carts_path) do |f| %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.hidden_field :user_id, value: current_end_user.id %>
+        <%= f.select :item_number, [1,2,3,4,5,6,7,8,9,10],{} %>
+        <%= f.submit "カートに入れる" %>
+        <% end %>
+    <% else %>
+        <span>すでにカートに入っています</span><br>
+      <%= link_to 'カートを確認', end_users_carts_path %>
+    <% end %>
 <% end %>

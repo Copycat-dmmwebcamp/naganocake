@@ -12,7 +12,7 @@
   				<span>お届け先</span><br>
   				<div>
   					<span>ご自身の住所</span><br>
-  					<%= f.radio_button :postage, :'0' %>
+  					<%= f.radio_button :postage, :'0', checked: true  %>
   					<%= @end_user.postal_code + @end_user.address + @end_user.full_name_kanji %>
   				</div>
 

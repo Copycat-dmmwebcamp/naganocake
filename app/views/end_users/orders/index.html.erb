@@ -1,16 +1,79 @@
 <div class="body">
   <div class="container">
        <div class="row">
-       	<%= @order.payment_info_i18n  %>
-       	<%= @order.postal_code  %>
-       	<%= @order.delivery_address  %>
-       	<%= @order.destination  %>
 
+       	<% total = 0 %>
 
+          <table class="table table-striped">
+            <tr>
+              <th>商品名</th>
+              <th>単価(税込)</th>
+	          <th>数量</th>
+	          <th>小計</th>
+	          <th></th>
+            </tr>
 
+            <% @cart_items.each do |cart_item| %>
+	        <tr>
+	          <td>
+	            <%= attachment_image_tag(cart_item.item, :item_image, :fill, 30, 30, allback: "no-image-mini.jpg") %>
+		        <%= cart_item.item.item_name %>
+	          </td>
+	          <td>
+                <%= (cart_item.item.without_tax * 1.1) %>円
+	          </td>
+	          <td>
+	          	<%= cart_item.item_number %>個
+	          </td>
+	          <td>
+                <%= (cart_item.item.without_tax.to_i * cart_item.item_number * 1.1).round %>円
+                <% total += cart_item.item.without_tax.to_i * cart_item.item_number %>
+	          </td>
+	          <td>
 
+	          </td>
+	        </tr>
+            <% end %>
+          </table>
+          <table class="table table-bordered right" style = "width:25%;">
+            <tr>
+              <td style = "height:30%; text-align : center;">送料</td>
+              <td style = "height:30%; text-align: right;">
+                800 円 </td>
+            </tr>
+            <tr>
+              <td style = "height:30%; text-align : center;">商品合計金額</td>
+              <td style = "height:30%; text-align: right;">
+                <%= (total * 1.1).round %>円 </td>
+            </tr>
+            <tr>
+              <td style = "height:30%; text-align : center;">請求合計金額</td>
+              <td style = "height:30%; text-align: right;">
+                <%= (total * 1.1 + 800).round %>円 </td>
+            </tr>
+          </table>
 
+          <div>
+          	<h4>お支払方法</h4>
+          	<%= @order.payment_info_i18n  %><br>
 
+          	<h4>お届け先</h4>
+       		<%= @order.postal_code  %>
+       		<%= @order.delivery_address  %><br>
+       	  	<%= @order.destination  %>
+          </div>
+          <%= form_for(@order, url: end_users_orders_path) do |f| %>
+          	<%= f.hidden_field :payment_info, :value => @order.payment_info %>
+          	<%= f.hidden_field :destination, :value => @order.destination %>
+          	<%= f.hidden_field :delivery_address, :value => @order.delivery_address %>
+          	<%= f.hidden_field :postal_code, :value => @order.postal_code %>
+          	<%= f.hidden_field :order_status, :value => "stage0" %>
+          	<%= f.hidden_field :postage, :value => 800 %>
+          	<%= f.hidden_field :billing_amount, :value => (total * 1.1 + 800).round %>
+          		<div style="text-align : center; margin: 20px;"> 
+            		<%= f.submit '購入を確定する', class: "btn btn-primary", :style=> "width:40%;" %>
+          		</div>
+          <% end %>
        </div>
    </div>
 </div>
