@@ -50,6 +50,7 @@ Rails.application.routes.draw do
 
    # 顧客側/注文関連
    namespace :end_users do
+    get 'orders/complete'
    	resources :orders
 	    post 'orders/confirm'
 	    get 'orders/history'
