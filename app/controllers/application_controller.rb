@@ -10,7 +10,11 @@ before_action :reject_user, only: [:create]
 protected
 
   def after_sign_in_path_for(resource)
-    	end_users_items_path
+     if end_user_signed_in?
+    	 end_users_items_path
+     else 
+       admins_homes_top_path
+     end
 
   end
 

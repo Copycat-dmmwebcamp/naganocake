@@ -44,6 +44,7 @@ Rails.application.routes.draw do
 
    # 顧客側/カート
    namespace :end_users do
+    get 'carts/destroy_all'
     resources :carts
    end
 

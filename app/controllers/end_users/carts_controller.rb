@@ -24,8 +24,10 @@ class EndUsers::CartsController < ApplicationController
   end
 
   def destroy_all
-    cart_items = current_end_user.carts
-  	cart_items.destroy_all
+    cart_items = CartItem.where(params[user_id: current_end_user.id])
+    cart_items.each do |cart_item|
+  	cart_item.destroy
+    end
     redirect_to end_users_carts_path
   end
 
