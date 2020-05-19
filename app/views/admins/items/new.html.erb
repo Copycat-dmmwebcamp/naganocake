@@ -5,7 +5,7 @@
 	    <h2>商品新規登録</h2>	
 
         <!-- 仮で作成中 -->
-        <%= render "error_messages", obj: @item_new %>
+        <%= render "admins/shared/error_messages", resource: @item %>
 
          <%= form_for(@item_new, url: admins_items_path) do |f| %>
 

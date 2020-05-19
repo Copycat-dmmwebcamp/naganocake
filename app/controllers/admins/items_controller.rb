@@ -9,6 +9,7 @@ class Admins::ItemsController < ApplicationController
 
 	def new
 		@item_new = Item.new
+		@item = Item.new
 	end
 
 	def create
@@ -16,7 +17,6 @@ class Admins::ItemsController < ApplicationController
 		if @item.save
 			redirect_to admins_items_path, notice: "successfully created book!"
 		else
-		  @item_new = Item.new
 		  render 'new'
 		end
 	end
