@@ -1,0 +1,52 @@
+<h2>注文履歴一覧</h2>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>注文日</th>
+                <th>配送先</th>
+                <th>注文商品</th>
+                <th>支払金額</th>
+                <th>注文詳細</th>
+            </tr>
+        </thead>
+
+        <% @orders.each do |order| %>
+
+        <tbody>
+            <tr>
+                <th>
+      	            <%= order.created_at %>
+                </th>
+
+                <!-- 配送先 -->
+                <th>
+      	            <%= order.postal_code %>
+      	            <br>
+      	            <%= order.delivery_address %>
+      	            <br>
+      	            <%= order.destination %>
+                </th>
+
+                <!-- 注文商品 each文を使って取り出す　-->
+                <th>
+                    <%= order.order_items.each do |order_item| %>
+                    <p>
+                        <%= order_item.item.item_name %>
+                    </p>
+                    <% end %>
+                </th>
+
+                <!-- 支払金額 -->
+                <th>
+                    <%= order.billing_amount %>円
+                </th>
+
+                <th>
+      	            <%= link_to '表示する', end_users_orders_history_show(order.id) %>
+                </th>
+  	        </tr>
+        </tbody>
+
+    </table>
