@@ -49,9 +49,9 @@
       <% total + (order_item.unit_price * order_item.item_number) %>
       <tr>
        <td><%= order_item.item.item_name %></td>
-       <td><%= order_item.unit_price %></td>
+       <td><%= order_item.unit_price.to_s(:delimited) %></td>
        <td><%= order_item.item_number %></td>
-       <td><%= order_item.unit_price * order_item.item_number %> </td>
+       <td><%= (order_item.unit_price * order_item.item_number).to_s(:delimited) %> </td>
        <td>
         <%= form_for(order_item, url: admins_update_product_path) do |f| %>
         <%= f.select :production_status, OrderItem.production_statuses.keys.map {|k| [I18n.t("enums.order_item.production_status.#{k}"), k]} %>
@@ -67,9 +67,9 @@
   </div>
 </div>
 <p>商品合計</p>
-<%= @order.billing_amount - 800 %>円
+<%= (@order.billing_amount - 800).to_s(:delimited) %>円
 <p>送料</p>
 <p>800円</p>
 <p>請求金額合計</p>
-<%= @order.billing_amount %>円
+<%= (@order.billing_amount).to_s(:delimited) %>円
 </div>

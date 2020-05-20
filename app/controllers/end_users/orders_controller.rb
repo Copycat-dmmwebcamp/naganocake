@@ -64,8 +64,6 @@ class EndUsers::OrdersController < ApplicationController
   def complete
 
   end
-  def show
-  end
 
   def show
     @end_user = current_end_user

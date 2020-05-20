@@ -26,7 +26,7 @@
     			<div>
     				<span>価格</span>
     				<% tax_include = item.without_tax.to_i * 1.1  %>
-    				<h5>¥ <%= tax_include.round %></h5>
+    				<h5>¥ <%= tax_include.round.to_s(:delimited) %></h5>
     			</div>
     			<% count = count + 1 %>
     			<% end %>
