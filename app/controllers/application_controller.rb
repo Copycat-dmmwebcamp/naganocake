@@ -28,6 +28,7 @@ protected
    if end_user_signed_in?
     if current_end_user.user_status == false
        sign_out
+       flash[:error] = "退会済みです。"
        redirect_to new_end_user_session_path
     end
    end
