@@ -17,6 +17,6 @@ class Item < ApplicationRecord
 	validates :category_id, presence: true
 	# 税抜価格、数値のみ
 	validates :without_tax, numericality: true
-	validates :item_status, presence: true
+	validates :item_status, inclusion: { in: ["selling", "soldout"] }
 	validates :recomend, inclusion: { in: [true, false] }
 end
