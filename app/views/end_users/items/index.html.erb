@@ -27,7 +27,7 @@
                     <div>
                          <span>価格</span> 
                         <% tax_include = item.without_tax.to_i * 1.1  %>
-                        <%= tax_include.round   %>
+                        <%= tax_include.round.to_s(:delimited)   %>
                     </div>
                     <div>
                     	<% if  item.item_status == 'soldout' %>

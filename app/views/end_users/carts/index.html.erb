@@ -28,7 +28,7 @@
 		        <%= cart_item.item.item_name %>
 	          </td>
 	          <td>
-                <%= (cart_item.item.without_tax.to_i * 1.1).round %>円
+                <%= (cart_item.item.without_tax.to_i * 1.1).round.to_s(:delimited) %>円
 	          </td>
 	          <td>
                 <%= form_for(cart_item, url:end_users_cart_path(cart_item.id)) do |f| %>
@@ -37,7 +37,7 @@
                 <% end %>
 	          </td>
 	          <td>
-                <%= (cart_item.item.without_tax.to_i * cart_item.item_number * 1.1).round %>円
+                <%= (cart_item.item.without_tax.to_i * cart_item.item_number * 1.1).round.to_s(:delimited) %>円
                 <% total += cart_item.item.without_tax.to_i * cart_item.item_number %>
 	          </td>
 	          <td>
@@ -53,7 +53,7 @@
             <tr>
               <td style = "height:30%; text-align : center;">合計金額</td>
               <td style = "height:30%; text-align: right;">
-                <%= (total * 1.1).round %>円
+                <%= (total * 1.1).round.to_s(:delimited) %>円
               </td>
             </tr>
           </table>
