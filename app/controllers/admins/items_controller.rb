@@ -14,7 +14,7 @@ class Admins::ItemsController < ApplicationController
 	def create
 		@item_new = Item.new(item_params)
 		if @item_new.save
-			redirect_to admins_items_path, notice: "successfully created book!"
+			redirect_to  admins_item_path(@item_new.id), notice: "商品を作成しました!"
 		else
 		  render 'new'
 		end
@@ -31,10 +31,16 @@ class Admins::ItemsController < ApplicationController
 	def update
 		@item = Item.find(params[:id])
 		if @item.update(item_params)
-			redirect_to admins_items_path, notice: "successfully updated book!"
+			redirect_to admins_items_path, notice: "商品を編集しました"
 		else
 			render 'edit'
 		end
+	end
+
+	def destroy
+		@item = Item.find(params[:id])
+		@item.destroy
+		redirect_to admins_items_path, notice: "商品を削除しました"
 	end
 
 	private

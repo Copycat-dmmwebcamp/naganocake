@@ -1,11 +1,13 @@
 <h4>会員の方はこちらからログイン</h4>
 
+
 <!-- ログイン画面のエラーメッセージ表示 -->
 <font color="red">
   <%- flash.each do |name, msg| -%>
     <%= content_tag :div, msg, id: "flash_#{name}" %>
   <%- end -%>
 </font>
+
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">

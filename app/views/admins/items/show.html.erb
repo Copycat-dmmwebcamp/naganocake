@@ -19,8 +19,8 @@
                     <div>
                          <span>税込価格（税抜価格）</span> 
                         <% tax_include = @item.without_tax.to_i * 1.1  %>
-                        <%= tax_include.round   %>
-                        (<%= @item.without_tax %>)
+                        <%= tax_include.round.to_s(:delimited)   %>
+                        (<%= (@item.without_tax.to_i).to_s(:delimited) %>)
                     </div>
                     <div>
                         <span>販売ステータス</span>
@@ -35,7 +35,9 @@
                        <% end %>
                     </div>
 
-                    <%= link_to '編集する', edit_admins_item_path(@item.id) %>
+                     <%= link_to "編集する", edit_admins_item_path(@item.id), class: "btn btn-danger" %>
+
+                     <%= link_to "商品を削除する", admins_item_path(@item.id), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
        </div>
    </div>
 </div>

@@ -9,5 +9,5 @@
 
 <%= form_for(@user, url: end_users_user_path) do |f| %>
 <%= f.hidden_field :user_status, :value => false %>
-<%= f.submit '退会する' %>
+<%= f.submit '退会する', data: { confirm: "退会しますか？"} %>
 <% end %>

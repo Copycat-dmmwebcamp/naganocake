@@ -16,7 +16,9 @@
        	    <% @items.each do |item| %>
        	    	<div>
        				 <div>
+                      <%= link_to end_users_item_path(item.id) do %>
                         <%= attachment_image_tag(item, :item_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %>
+                        <% end %>
                     </div>
                     <div>
                         <span>商品名</span>

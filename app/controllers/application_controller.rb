@@ -11,7 +11,7 @@ protected
 
   def after_sign_in_path_for(resource)
      if end_user_signed_in?
-    	 end_users_items_path
+    	 root_path
      else 
        admins_homes_top_path
      end
@@ -20,17 +20,24 @@ protected
 
 
   def after_sign_out_path_for(resource)
-    end_users_items_path
+    if  resource == :admin
+      new_admin_session_path
+    else
+      root_path
+    end
   end
 
 #退会済みユーザーがログインできなくする
   def reject_user
-   if end_user_signed_in?
-    if current_end_user.user_status == false
-       sign_out
-       redirect_to new_end_user_session_path
+    @end_user = EndUser.find_by(email: params[:end_user][:email].downcase)
+    if @end_user
+      if (@end_user.valid_password?(params[:end_user][:password]) && (@end_user.active_for_authentication? == false))
+        flash[:error] = "退会済みです。"
+        redirect_to  new_end_user_session_path
+      end
+    else
+      flash[:error] = "必須項目を入力してください。"
     end
-   end
   end
 
   def configure_permitted_parameters
