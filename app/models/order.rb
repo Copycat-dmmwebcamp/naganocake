@@ -7,4 +7,6 @@ class Order < ApplicationRecord
 
     enum payment_info: [:credit, :bank]
     # credit = クレジット　bank = 銀行払い
+
+
 end
