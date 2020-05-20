@@ -1,5 +1,6 @@
 <h2>ジャンル編集</h2>
 
+<%= render "admins/shared/error_messages", resource: @category %>
 <!-- updateのurl -->
 <%= form_for(@category, url:admins_category_path) do |f| %>
 	ジャンル

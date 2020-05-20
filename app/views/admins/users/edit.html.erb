@@ -1,5 +1,7 @@
 <h2><%= @user.family_name_kanji %><%= @user.first_name_kanji %>の会員情報編集</h2>
 
+<%= render "admins/shared/error_messages", resource: @user %>
+
 <p>顧客ID</p>
 <%= @user.id %>
 

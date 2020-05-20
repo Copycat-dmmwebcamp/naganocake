@@ -2,9 +2,10 @@
 <div class="body">
   <div class="container">
        <div class="row">
-        <h2>商品編集</h2> 
-         <%= form_for(@item, url: admins_item_path) do |f| %>
-         
+        <h2>商品編集</h2>
+          <%= render "admins/shared/error_messages", resource: @item %>
+          <%= form_for(@item, url: admins_item_path) do |f| %>
+          
             <%= f.attachment_field :item_image %>
 
             <div>
@@ -17,6 +18,10 @@
                 <%= f.text_field :item_explanation %>
             </div>
 
+            <div>
+                <%= f.label :ジャンル %>
+                <%= f.collection_select :category_id, Category.all, :id, :name %>
+            </div>
 
             <div>
                 <%= f.label :税抜価格 %> <!-- ここを変更 -->

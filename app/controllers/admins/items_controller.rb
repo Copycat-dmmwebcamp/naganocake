@@ -9,12 +9,11 @@ class Admins::ItemsController < ApplicationController
 
 	def new
 		@item_new = Item.new
-		@item = Item.new
 	end
 
 	def create
-		@item = Item.new(item_params)
-		if @item.save
+		@item_new = Item.new(item_params)
+		if @item_new.save
 			redirect_to admins_items_path, notice: "successfully created book!"
 		else
 		  render 'new'
@@ -33,6 +32,8 @@ class Admins::ItemsController < ApplicationController
 		@item = Item.find(params[:id])
 		if @item.update(item_params)
 			redirect_to admins_items_path, notice: "successfully updated book!"
+		else
+			render 'edit'
 		end
 	end
 

@@ -15,8 +15,11 @@ class EndUsers::UsersController < ApplicationController
      reset_session #ログアウト
      redirect_to root_path
    else
-	   @user.update(user_params) #会員登録情報の編集用記述
-	   redirect_to new_end_users_user_path(@user.id)
+	   if @user.update(user_params) #会員登録情報の編集用記述
+	      redirect_to new_end_users_user_path(@user.id)
+     else #エラーメッセージ表示用
+      render 'edit'
+    end
    end
   end
 

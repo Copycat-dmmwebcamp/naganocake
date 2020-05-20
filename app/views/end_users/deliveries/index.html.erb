@@ -2,6 +2,8 @@
 
 <h5><%= notice %></h5>
 
+<%= render "end_users/shared/error_messages", resource: @delivery_place %>
+
 <%= form_for @delivery_place, url: end_users_deliveries_path do |f| %>
 	<table>
 		<tbody>

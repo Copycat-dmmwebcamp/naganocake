@@ -1,7 +1,7 @@
 class EndUsers::CartsController < ApplicationController
   def index
   	@cart_items = current_end_user.cart_items
-  	
+  	@cart_item = CartItem.new
   end
 
   def create
@@ -12,9 +12,13 @@ class EndUsers::CartsController < ApplicationController
   end
 
   def update
-    cart_item = CartItem.find(params[:id])
-    cart_item.update(cart_item_params)
-    redirect_to end_users_carts_path
+    @cart_item = CartItem.find(params[:id])
+    if @cart_item.update(cart_item_params)
+       redirect_to end_users_carts_path
+    else
+       @cart_items = current_end_user.cart_items
+       render 'index'
+    end
   end
 
   def destroy
