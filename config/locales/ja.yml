@@ -21,12 +21,16 @@ ja:
         status1: 製作待ち
         status2: 製作中
         status3: 製作完了
-  # devise:
-  #   failure:
-  #     admin:
-  #       invalid: "情報を入力してください"
-  #       not_found_in_database: "登録情報と一致しません"
-  #       unauthenticated: "未認証"
+  devise:
+    failure:
+      admin:
+        invalid: "未記載の箇所があります"
+        not_found_in_database: "登録情報と一致しません"
+        unauthenticated: "未認証"
+      end_user:
+        invalid: "未記載の箇所があります"
+        not_found_in_database: "登録情報と一致しません"
+        unauthenticated: "未認証"
 
 
   activerecord:
