@@ -9,4 +9,6 @@ class Order < ApplicationRecord
     # credit = クレジット　bank = 銀行払い
 
 
+=======
+
 end

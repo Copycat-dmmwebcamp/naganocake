@@ -1,5 +1,6 @@
 <h2>ジャンル一覧・追加</h2>
 
+<%= render "admins/shared/error_messages", resource: @category %>
 <!-- resourcesが生成してくれたroutesだと単数形なのでurl:で複数形のroutesを指定する -->
 <%= form_for @category, url: admins_categories_path do |f| %>
 	ジャンル名

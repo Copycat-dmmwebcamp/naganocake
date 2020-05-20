@@ -2,6 +2,7 @@ class Category < ApplicationRecord
 
 	has_many :items, dependent: :destroy
 
-	validates :name, presence: true
+	# 空でない、一意性があるか、
+	validates :name, presence: true, uniqueness: true
 	validates :category_status, inclusion: { in: [true, false] }
 end

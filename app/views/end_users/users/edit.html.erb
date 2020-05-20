@@ -1,6 +1,8 @@
 <div class="container">
  <h2>登録情報編集</h2>
 
+<%= render "end_users/shared/error_messages", resource: @user %>
+
  <%= form_for(@user, url: end_users_user_path) do |f| %>
 
  <div class="row">

@@ -6,22 +6,29 @@ class EndUsers::DeliveriesController < ApplicationController
   end
 
   def create
-  	delivery_place = DeliveryPlace.new(delivery_place_params)
+  @delivery_place = DeliveryPlace.new(delivery_place_params)
 	# ログインユーザ＝紐付けのIDがあっていれば持っていく、authenticateも必要
-	delivery_place.end_user_id = current_end_user.id
-	delivery_place.save
-	redirect_to end_users_deliveries_path, notice: "配送先が追加されました。"
+	@delivery_place.end_user_id = current_end_user.id
+	  if @delivery_place.save
+	     redirect_to end_users_deliveries_path, notice: "配送先が追加されました。"
+    else
+       @delivery_places = DeliveryPlace.all
+       render 'index'
+    end
   end
 
   def edit
-  	# idもってくる
+  # idもってくる
 	@delivery_place = DeliveryPlace.find(params[:id])
   end
 
   def update
-  	delivery_place = DeliveryPlace.find(params[:id])
-	delivery_place.update(delivery_place_params)
-	redirect_to end_users_deliveries_path, notice: "配送先情報が更新されました。"
+  @delivery_place = DeliveryPlace.find(params[:id])
+  	if @delivery_place.update(delivery_place_params)
+  	   redirect_to end_users_deliveries_path, notice: "配送先情報が更新されました。"
+    else
+       render 'edit'
+    end
   end
 
   def destroy
