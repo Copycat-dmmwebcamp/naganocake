@@ -69,7 +69,8 @@ class EndUsers::OrdersController < ApplicationController
 
   def show
     @end_user = current_end_user
-    @orders = @end_user.orders.reverse_order　# reverse_order = 降順にする記述
+    @orders = @end_user.orders.reverse_order
+    # reverse_order = 降順にする記述
   end
 
   def history_show
