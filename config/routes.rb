@@ -23,9 +23,8 @@ Rails.application.routes.draw do
    end
    # 顧客側/注文履歴
   namespace :admins do
+    patch 'order_histories/:id/product' => 'order_histories#update_product', as: 'update_product'
   	resources :order_histories
-  	get 'order_histories/:id/order' => 'order_histories#update_order', as: 'update_order'
-  	get 'order_histories/:id/product' => 'order_histories#update_product', as: 'update_product'
   end
 
 
