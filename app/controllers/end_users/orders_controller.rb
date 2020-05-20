@@ -25,6 +25,12 @@ class EndUsers::OrdersController < ApplicationController
 
   	else
   		# 新たに入力した住所を選択
+      @delivery_place = DeliveryPlace.new
+      @delivery_place.postal_code =  @order.postal_code
+      @delivery_place.address =  @order.delivery_address
+      @delivery_place.destination =  @order.destination
+      @delivery_place.end_user_id =  current_end_user.id
+      @delivery_place.save
   	end
     @cart_items = current_end_user.cart_items
   	render 'index'

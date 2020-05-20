@@ -25,7 +25,7 @@
             </div>
             <div>
                 <% if  @item.item_status == 'soldout' %>
-                売り切れ中です
+                 売り切れ中です
                 <% end %>
             </div>
         <div>
@@ -36,15 +36,18 @@
 <div>
   <% if end_user_signed_in? %>
     <% @cart_items = CartItem.where(end_user_id: current_end_user.id, item_id: @item.id) %>
-    <% if @cart_items.empty?  %>
-        <%= form_for(@cart_item, url:end_users_carts_path) do |f| %>
+    <% if @item.item_status == 'soldout' %>
+          <h5>申し訳ありません　品切れ中です</h5>
+    <% elsif  @cart_items.empty? %>
+     <%= form_for(@cart_item, url:end_users_carts_path) do |f| %>
         <%= f.hidden_field :item_id, value: @item.id %>
         <%= f.hidden_field :user_id, value: current_end_user.id %>
         <%= f.select :item_number, [1,2,3,4,5,6,7,8,9,10],{} %>
         <%= f.submit "カートに入れる" %>
         <% end %>
     <% else %>
-        <span>すでにカートに入っています</span><br>
+      <span>すでにカートに入っています</span><br>
       <%= link_to 'カートを確認', end_users_carts_path %>
     <% end %>
+
 <% end %>

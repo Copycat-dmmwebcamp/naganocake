@@ -19,7 +19,7 @@
                 <tr>
                       <td><%= item.id %></td>
                       <td><%= link_to item.item_name, admins_item_path(item.id) %></td>
-                      <td><%= item.without_tax %></td>
+                      <td><%= (item.without_tax.to_i).to_s(:delimited) %></td>
                       <td><%= Category.find(item.category_id).name %></td>
                       <td><%= item.item_status_i18n %></td>
                       <td>

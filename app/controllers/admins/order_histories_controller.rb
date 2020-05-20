@@ -4,7 +4,7 @@ class Admins::OrderHistoriesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-  	@orders = Order.all
+  	@orders = Order.all.reverse_order
   end
 
   def show
