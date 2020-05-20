@@ -67,6 +67,16 @@ class EndUsers::OrdersController < ApplicationController
   def show
   end
 
+  def show
+    @end_user = current_end_user
+    @orders = @end_user.orders.reverse_order　# reverse_order = 降順にする記述
+  end
+
+  def history_show
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items
+  end
+
   private
 
   def order_params
