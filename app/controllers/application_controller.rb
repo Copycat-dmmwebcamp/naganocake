@@ -29,15 +29,15 @@ protected
 
 #退会済みユーザーがログインできなくする
   def reject_user
-    @end_user = EndUser.find_by(email: params[:end_user][:email].downcase)
-    if @end_user
-      if (@end_user.valid_password?(params[:end_user][:password]) && (@end_user.active_for_authentication? == false))
-        flash[:error] = "退会済みです。"
-        redirect_to  new_end_user_session_path
-      end
-    else
-      flash[:error] = "必須項目を入力してください。"
-    end
+    # @end_user = EndUser.find_by(email: params[:end_user][:email].downcase)
+    # if @end_user
+    #   if (@end_user.valid_password?(params[:end_user][:password]) && (@end_user.active_for_authentication? == false))
+    #     flash[:error] = "退会済みです。"
+    #     redirect_to  new_end_user_session_path
+    #   end
+    # else
+    #   flash[:error] = "必須項目を入力してください。"
+    # end
   end
 
   def configure_permitted_parameters

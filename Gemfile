@@ -74,5 +74,7 @@ gem "refile-mini_magick"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 
+# 日本語化
+gem 'rails-i18n'
 
 
