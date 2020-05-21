@@ -11,7 +11,7 @@
   <div class="row">
   <div class="form-group">
    <p class="col-xs-2">配送先</p>
-   <%= "〒" + @order.postal_code + @order.delivery_address + @order.end_user.family_name_kanji + @order.end_user.first_name_kanji %>
+   <%= "〒" + (@order.postal_code.to_s.insert(3, "-")) + @order.delivery_address + @order.end_user.family_name_kanji + @order.end_user.first_name_kanji %>
   </div>
  </div>
 
