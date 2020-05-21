@@ -1,0 +1,22 @@
+<div class="body">
+  <div class="container">
+       <div class="row">
+       	<%= @keyword %>の検索結果
+       		<div>
+       			<% @searched_end_users.each do |end_user| %>
+       				<%= link_to admins_user_path(end_user.id) do %>
+       					<%= end_user.full_name_kanji %><br>
+   	   				<% end %>
+       			<% end %>
+       		</div>
+       		<div>
+       			<% @searched_items.each do |item| %>
+       			<%= link_to admins_item_path(item.id) do %>
+       				<%= attachment_image_tag(item, :item_image, :fill, 300, 300, fallback: "no-image-mini.jpg") %>
+       				<%= item.item_name %><br>
+       			<% end %>
+       			<% end %>
+       		</div>
+       </div>
+   </div>
+</div>

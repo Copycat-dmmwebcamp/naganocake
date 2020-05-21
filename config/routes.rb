@@ -23,11 +23,15 @@ Rails.application.routes.draw do
    end
    # 顧客側/注文履歴
   namespace :admins do
+    get 'order_histories/:id/user_order' => 'order_histories#user_order', as: 'user_order'
     patch 'order_histories/:id/product' => 'order_histories#update_product', as: 'update_product'
   	resources :order_histories
   end
-
-
+  
+  namespace :admins do
+    get  'searched' => 'searches#search',  as: 'search'
+  end
+  
   devise_for :end_users, controllers: {
     sessions: "end_users/sessions",
     registrations: "end_users/registrations",

@@ -19,4 +19,12 @@ class Item < ApplicationRecord
 	validates :without_tax, numericality: true
 	validates :item_status, inclusion: { in: ["selling", "soldout"] }
 	validates :recomend, inclusion: { in: [true, false] }
+
+	def self.search(keyword)
+   	 where(['item_name LIKE ?', "%#{keyword}%"])
+ 	end
+
+
+
+
 end

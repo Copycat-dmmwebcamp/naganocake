@@ -28,6 +28,11 @@ class EndUser < ApplicationRecord
   # validates :user_status, inclusion: { in: [:true, :false] }はadmin側で使用する
 
 
+ def self.search(keyword)
+    where(['family_name_kanji LIKE ? OR first_name_kanji LIKE ? OR family_name_kana LIKE ? OR first_name_kana LIKE ?', "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+ end
+
+
 # 漢字のフルネーム
   def full_name_kanji
     self.family_name_kanji+   self.first_name_kanji
