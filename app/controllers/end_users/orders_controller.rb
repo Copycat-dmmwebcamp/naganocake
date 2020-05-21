@@ -79,7 +79,7 @@ class EndUsers::OrdersController < ApplicationController
 
   def history
     @end_user = current_end_user
-    @orders = Order.where(end_user_id: @end_user.id)
+     @orders = @end_user.orders.reverse_order
     # reverse_order = 降順にする記述
   end
 
