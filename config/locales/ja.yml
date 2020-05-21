@@ -26,12 +26,22 @@ ja:
       admin:
         invalid: "未記載の箇所があります"
         not_found_in_database: "登録情報と一致しません"
-        unauthenticated: "未認証"
+        unauthenticated: "ログインしてください"
       end_user:
         invalid: "未記載の箇所があります"
         not_found_in_database: "登録情報と一致しません"
-        unauthenticated: "未認証"
-
+        unauthenticated: "ログインしてください"
+        inactive: "退会済みユーザーです"
+      registrations:
+        end_user:
+          signed_up: "登録されていません"
+      sessions:
+        end_user:
+          signed_in: 'ログインしました'
+          signed_out: 'ログアウトしています'
+        admin:
+          signed_in: 'ログインしました'
+          signed_out: 'ログアウトしています'
 
   activerecord:
     errors:
