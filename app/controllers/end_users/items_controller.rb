@@ -26,7 +26,7 @@ class EndUsers::ItemsController < ApplicationController
   	@id = params[:category_id]
   	@category = Category.find(@id)
   	# カテゴリーと一致する商品を探す
-  	@items = Item.where(category_id: @id)
+  	@items = Item.where(category_id: @id).page(params[:page])
   	render 'index'
 
   end
