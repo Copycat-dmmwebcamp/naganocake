@@ -31,7 +31,9 @@ class EndUsers::OrdersController < ApplicationController
   end
 
   def index
-
+    # カートに飛ばす
+    @cart_items = current_end_user.cart_items
+    redirect_to end_users_carts_path
   end
 
 # 注文と注文商品の作成
@@ -75,9 +77,9 @@ class EndUsers::OrdersController < ApplicationController
 
   end
 
-  def show
+  def history
     @end_user = current_end_user
-    @orders = @end_user.orders.reverse_order
+     @orders = @end_user.orders.reverse_order
     # reverse_order = 降順にする記述
   end
 

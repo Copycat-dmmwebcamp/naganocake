@@ -50,11 +50,12 @@ Rails.application.routes.draw do
    # 顧客側/注文関連
    namespace :end_users do
     get 'orders/complete'
-   	resources :orders
+    get 'orders/history'
+    get "orders/confirm" => 'orders#index'
+    get 'orders/:id/history_show' => 'orders#history_show', as: 'orders_history_show'
+   	resources :orders, only: [:new, :index, :create]
 	    post 'orders/confirm'
-	    get 'orders/history'
-	    get 'orders/:id/history_show' => 'orders#history_show', as: 'orders_history_show'
-   end
+	    end
 	# 顧客側/ユーザー関連
    namespace :end_users do
    	resources :users
