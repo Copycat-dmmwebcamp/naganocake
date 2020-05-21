@@ -11,7 +11,7 @@ class EndUsers::ItemsController < ApplicationController
   	@items = Item.all
   	@categories = Category.all
   	@id = 0
-
+    @items = Item.page(params[:page])
   end
 
   def show

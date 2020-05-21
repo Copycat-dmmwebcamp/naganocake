@@ -5,6 +5,7 @@ class Admins::UsersController < ApplicationController
 
     def index
      @users = EndUser.all
+     @users = EndUser.page(params[:page]).per(10)
     end
 
 	def show
