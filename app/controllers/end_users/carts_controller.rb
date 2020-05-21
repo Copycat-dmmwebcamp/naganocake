@@ -1,6 +1,7 @@
 class EndUsers::CartsController < ApplicationController
   def index
   	@cart_items = current_end_user.cart_items
+    # エラー文の表示用
   	@cart_item = CartItem.new
   end
 
