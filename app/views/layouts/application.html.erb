@@ -43,8 +43,8 @@
 
             <!-- 検索機能 -->
             <div class="text-right" style="margin-right: 20px; padding-bottom: 5px ">
-              <%= form_tag(admins_items_path, :method => 'get') do %>
-                <%= text_field_tag :search %>
+              <%= form_tag(admins_search_path, method: "get") do %>
+              <%= text_field_tag :keyword,  params[:keyword], placeholder:"user名や商品名"%>
                 <%= submit_tag 'Search' %>
               <% end %>
             </div>

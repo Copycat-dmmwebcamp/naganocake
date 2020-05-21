@@ -8,6 +8,12 @@ class Admins::OrderHistoriesController < ApplicationController
     @orders = Order.page(params[:page]).per(10)
   end
 
+  def user_order
+    @end_user = EndUser.find(params[:id])
+    @orders = Order.where(end_user_id: @end_user.id).reverse_order.page(params[:page]).per(10)
+    render 'index'
+  end
+
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
