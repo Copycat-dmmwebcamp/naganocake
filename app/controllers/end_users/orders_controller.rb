@@ -25,12 +25,6 @@ class EndUsers::OrdersController < ApplicationController
 
   	else
   		# 新たに入力した住所を選択
-      @delivery_place = DeliveryPlace.new
-      @delivery_place.postal_code =  @order.postal_code
-      @delivery_place.address =  @order.delivery_address
-      @delivery_place.destination =  @order.destination
-      @delivery_place.end_user_id =  current_end_user.id
-      @delivery_place.save
   	end
     @cart_items = current_end_user.cart_items
   	render 'index'
@@ -43,6 +37,16 @@ class EndUsers::OrdersController < ApplicationController
 # 注文と注文商品の作成
   def create
     @order = Order.new(order_params)
+    # @order.postage == 2の時は登録されていない住所
+    if @order.postage == 2
+      @delivery_place = DeliveryPlace.new
+      @delivery_place.postal_code =  @order.postal_code
+      @delivery_place.address =  @order.delivery_address
+      @delivery_place.destination =  @order.destination
+      @delivery_place.end_user_id =  current_end_user.id
+      @delivery_place.save
+    end
+
     @order.end_user_id = current_end_user.id
     @order.save
     # カート内の商品をを注文商品に入れる
