@@ -15,11 +15,11 @@
 					<tbody>
 						<tr>
 							<td><%= f.label :name, "郵便番号(ハイフンなし)" %></td>
-							<td><%= f.text_field :postal_code %></td>
+							<td><%= f.text_field :postal_code, autofocus: true, class: "postal_code", id: "address_zipcode" %></td>
 						</tr>
 						<tr>
 							<td><%= f.label :name, "住所"  %></td>
-							<td><%= f.text_field :address, :size=>"60" %></td>
+							<td><%= f.text_field :address, :size=>"60", class: "address", id:"address_name" %></td>
 						</tr>
 						<tr>
 							<td><%= f.label :name, "宛名"  %></td>
