@@ -47,9 +47,7 @@
             <% end %>
           </table>
 
-          <%= link_to "買い物を続ける", root_path, class: "btn btn-primary", :style=> "margin: 10px;"%>
-
-          <table class="table table-bordered right" style = "width:25%;">
+          <table class="table table-bordered right" style = "width:25%; float: right;">
             <tr>
               <td style = "height:30%; text-align : center;">合計金額</td>
               <td style = "height:30%; text-align: right;">
@@ -57,6 +55,8 @@
               </td>
             </tr>
           </table>
+
+          <%= link_to "買い物を続ける", root_path, class: "btn btn-primary", :style=> "margin: 10px;"%>
 
           <% if @cart_items.count != 0 %>
           <div style="text-align : center; margin: 20px;"> 
