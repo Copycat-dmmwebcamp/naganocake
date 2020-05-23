@@ -48,8 +48,8 @@ class EndUsers::OrdersController < ApplicationController
       @delivery_place.end_user_id =  current_end_user.id
       @delivery_place.save
     end
-
     @order.end_user_id = current_end_user.id
+    @order.postage = 800
     @order.save
     # カート内の商品をを注文商品に入れる
     @cart_items = current_end_user.cart_items

@@ -1,51 +1,65 @@
 <div class="body">
   <div class="container">
        <div class="row">
+        <div class="text-left" style="margin-left: 150px; width: 140px; padding-bottom: 5px ">
+          <h4 style="background-color:#D3D3D3" class="text-center">注文情報入力</h4>
+        </div>
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-11">
+        		<%= form_for(@order, url: end_users_orders_confirm_path ) do |f| %>
+        			<!-- 支払方法選択 -->
+        			<div>
+        				<h5><strong>支払い方法</strong></h5>
+            <%= f.radio_button :payment_info, :credit, checked: true %>
+            <%= f.label :クレジットカード　%><br>
+            <%= f.radio_button :payment_info, :bank %>
+            <%= f.label :銀行振込　%><br>
 
-  		<%= form_for(@order, url: end_users_orders_confirm_path ) do |f| %>
-  			<!-- 支払方法選択 -->
-  			<div>
-  				<span>支払い方法</span><br>
-  			<%= f.collection_radio_buttons(:payment_info, Order.payment_infos_i18n, :first, :second )%>
-			</div>
-			<div>
-  				<span>お届け先</span><br>
-  				<div>
-  					<span>ご自身の住所</span><br>
-  					<%= f.radio_button :postage, :'0', checked: true  %>
-  					<%= @end_user.postal_code + @end_user.address + @end_user.full_name_kanji %>
-  				</div>
+      			</div>
+      			<div>
+        				<h5><strong>お届け先</strong></h5>
+        				<div>
+                  <%= f.radio_button :postage, :'0', checked: true  %>
+        					<span>ご自身の住所</span><br>
+        					　　<%= @end_user.postal_code + @end_user.address + @end_user.full_name_kanji %>
+        				</div>
 
-  				<div>
-  					<span>登録済住所から選択</span><br>
-  					<%= f.radio_button :postage, :'1' %>
-  				<%= f.label :origin_id %>
-  				<!-- postal_codeに選択されたdelivery_place.idを入れてコントローラーに送る-->
-  				<%= f.collection_select :billing_amount, @delivery_places.all, :id, :full_info %>
-  				</div>
+        				<div>
+                  <%= f.radio_button :postage, :'1' %>
+        					<span>登録済住所から選択</span><br>
+        				<!-- postal_codeに選択されたdelivery_place.idを入れてコントローラーに送る-->
+        				　　<%= f.collection_select :billing_amount, @delivery_places.all, :id, :full_info %>
+        				</div>
 
-  				<div>
-  					<span>新しいお届け先</span><br>
-  					<!-- 以下値をコントローラーに送るフォーム -->
-  					<%= f.radio_button :postage, :'2' %>
-  						<%= f.label :postal_code %>
-  						<%= f.text_field :postal_code %>
-
-  						<%= f.label :delivery_address %>
-  						<%= f.text_field :delivery_address %>
-
-  						<%= f.label :destination %>
-  						<%= f.text_field :destination %>
-  				</div>
-  				
-
-                
-			</div>
-
-			<%= f.submit "確認画面へ進む" %>
-			
-  		<% end %>
-
+        				<div>
+                  <%= f.radio_button :postage, :'2' %>
+        					<span>新しいお届け先</span><br>
+        					<!-- 以下値をコントローラーに送るフォーム -->
+        						　　<table>
+                  <thead>
+                    <tr>
+                      <th>郵便番号（ハイフンなし）</th>
+                      <td><%= f.text_field :postal_code %></td>
+                    </tr>
+                    <tr>
+                      <th>住所</th>
+                      <td><%= f.text_field :delivery_address %></td>
+                    </tr>
+                    <tr>
+                      <th>宛名</th>
+                      <td><%= f.text_field :destination %></td>
+                    </tr>
+                  </thead>
+                </table>
+        				</div>
+      			</div>
+            <br>
+      			<%= f.submit "確認画面へ進む", class: "btn btn-primary", :style=> "margin-left: 200px;" %>
+      			
+        		<% end %>
+            <br>
+          </div>
        </div>
    </div>
 </div>       	
