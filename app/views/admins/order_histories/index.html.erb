@@ -1,35 +1,44 @@
 <div class="container">
-<h3>注文履歴一覧</h3>
-<table class="table">
-	<thead>
-		<tr>
-			<th>購入日時</th>
-			<th>購入者</th>
-			<th>注文個数</th>
-			<th>注文ステータス</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @orders.each do |order| %>
-		<% total = 0 %>
-		<tr>
-			<td><%= link_to admins_order_history_path(order.id) do %>
-				<%= order.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+  <div class="row">
+    <div class="admin-title text-center col-md-3">
+	  <h3>注文履歴一覧</h3>
+    </div>
+  </div>
+
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<table class="admin-order-histories-table">
+				<thead>
+					<tr>
+						<th>購入日時</th>
+						<th>購入者</th>
+						<th>注文個数</th>
+						<th>注文ステータス</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @orders.each do |order| %>
+					<% total = 0 %>
+					<tr>
+						<td><%= link_to admins_order_history_path(order.id) do %>
+							<%= order.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+								<% end %>
+							</td>
+						<td><%= order.end_user.family_name_kanji %><%= order.end_user.first_name_kanji %></td>
+			            <td>
+			            <% order.order_items.each do |order_item| %>
+			             <% total += order_item.item_number %>
+			            <% end %>
+			            <%= total.round %>
+			            </td>
+						<td><%= order.order_status_i18n %></td>
+					</tr>
 					<% end %>
-				</td>
-			<td><%= order.end_user.family_name_kanji %><%= order.end_user.first_name_kanji %></td>
-            <td>
-            <% order.order_items.each do |order_item| %>
-             <% total += order_item.item_number %>
-            <% end %>
-            <%= total.round %>
-            </td>
-			<td><%= order.order_status_i18n %></td>
-		</tr>
-		<% end %>
-		<%= paginate @orders %>
-	</tbody>
-</table>
+					<%= paginate @orders %>
+				</tbody>
+			</table>
+		</div>
+	</div>
 
 </div>
 
