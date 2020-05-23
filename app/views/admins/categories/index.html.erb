@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-	  <div class="admin-title text-center col-md-3">
+	  <div class="admin-title text-center col-md-3" style="background-color: #eeeeee;">
 	    <h3>ジャンル一覧・追加</h3>
 	  </div>
 	</div>
@@ -14,22 +14,32 @@
 	</div>
 
 
-	<div class="row categories-create">
+	<div class="row categories-create" style="margin-top: 30px;">
 	  <div class="col-md-6">
 		<!-- resourcesが生成してくれたroutesだと単数形なのでurl:で複数形のroutesを指定する -->
 		<%= form_for @category, url: admins_categories_path do |f| %>
-			ジャンル　
-		    <%= f.text_field :name %>　
-		    <%= f.radio_button :category_status, :true, checked: true %>
-		    <%= f.label :category_status_true, "有効" %>　
-		    <%= f.radio_button :category_status, :false %>
-		    <%= f.label :category_status_false , "無効" %>　
-		    <%= f.submit '追加', class: "btn-lg btn-primary" %>
+			<table>
+				<tbody>
+					<tr>
+						<td><label>ジャンル</label></td>
+						<td style="padding-left: 10px;"><%= f.text_field :name %></td>
+						<td style="padding-left: 10px;">
+							<%= f.radio_button :category_status, :true, checked: true %>
+							<%= f.label :category_status_true, "有効" %>
+						</td>
+						<td style="padding-left: 10px;">
+							<%= f.radio_button :category_status, :false %>
+							<%= f.label :category_status_false , "無効" %>
+						</td>
+						<td style="padding-left: 10px;"><%= f.submit '追加', class: "btn-lg btn-primary" %></td>
+					</tr>
+				</tbody>
+			</table>
 		<% end %>
 	  </div>
 	</div>
 
-	<div class="row categories-create">
+	<div class="row categories-create" style="margin-top: 50px;">
 	  <div class="col-md-4">
 		<table class="categories-table">
 			<thead class="categories-table-title">

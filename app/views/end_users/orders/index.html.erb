@@ -69,7 +69,7 @@
           	<%= f.hidden_field :postage, :value => @order.postage %>
           	<%= f.hidden_field :billing_amount, :value => (total * 1.1 + 800).round %>
           		<div style="text-align : center; margin: 20px;"> 
-            		<%= f.submit '購入を確定する', class: "btn btn-primary", :style=> "width:40%;" %>
+            		<%= f.submit '購入を確定する', class: "btn btn-success", :style=> "width:40%;" %>
           		</div>
           <% end %>
        </div>

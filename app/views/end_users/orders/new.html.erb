@@ -9,48 +9,48 @@
         <div class="col-sm-11">
         		<%= form_for(@order, url: end_users_orders_confirm_path ) do |f| %>
         			<!-- 支払方法選択 -->
-        			<div>
-        				<h5><strong>支払い方法</strong></h5>
-            <%= f.radio_button :payment_info, :credit, checked: true %>
-            <%= f.label :クレジットカード　%><br>
-            <%= f.radio_button :payment_info, :bank %>
-            <%= f.label :銀行振込　%><br>
+              <h4><strong>支払い方法</strong></h4>
+        			<div style="margin-left: 30px;">
+                <%= f.radio_button :payment_info, :credit, checked: true %>
+                <%= f.label :クレジットカード　%><br>
+                <%= f.radio_button :payment_info, :bank %>
+                <%= f.label :銀行振込　%><br>
 
       			</div>
       			<div>
-        				<h5><strong>お届け先</strong></h5>
-        				<div>
+        				<h4><strong>お届け先</strong></h4>
+        				<div style="margin-left: 30px;">
                   <%= f.radio_button :postage, :'0', checked: true  %>
         					<span>ご自身の住所</span><br>
         					　　<%= @end_user.postal_code + @end_user.address + @end_user.full_name_kanji %>
         				</div>
 
-        				<div>
+        				<div style="margin-left: 30px;">
                   <%= f.radio_button :postage, :'1' %>
         					<span>登録済住所から選択</span><br>
         				<!-- postal_codeに選択されたdelivery_place.idを入れてコントローラーに送る-->
         				　　<%= f.collection_select :billing_amount, @delivery_places.all, :id, :full_info %>
         				</div>
 
-        				<div>
+        				<div style="margin-left: 30px;">
                   <%= f.radio_button :postage, :'2' %>
-        					<span>新しいお届け先</span><br>
+        					<span>新しいお届け先</span>
         					<!-- 以下値をコントローラーに送るフォーム -->
-        						　　<table>
-                  <thead>
-                    <tr>
-                      <th>郵便番号（ハイフンなし）</th>
-                      <td><%= f.text_field :postal_code %></td>
-                    </tr>
-                    <tr>
-                      <th>住所</th>
-                      <td><%= f.text_field :delivery_address %></td>
-                    </tr>
-                    <tr>
-                      <th>宛名</th>
-                      <td><%= f.text_field :destination %></td>
-                    </tr>
-                  </thead>
+        				  <table class="end-user-order-add-address" style="margin-left: 30px;">
+                    <thead>
+                      <tr>
+                        <th>郵便番号（ハイフンなし）</th>
+                        <td><%= f.text_field :postal_code %></td>
+                      </tr>
+                      <tr>
+                        <th>住所</th>
+                        <td><%= f.text_field :delivery_address, :size => "50" %></td>
+                      </tr>
+                      <tr>
+                        <th>宛名</th>
+                        <td><%= f.text_field :destination %></td>
+                      </tr>
+                    </thead>
                 </table>
         				</div>
       			</div>
