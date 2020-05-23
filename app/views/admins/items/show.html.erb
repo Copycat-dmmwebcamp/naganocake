@@ -1,33 +1,38 @@
 
 <div class="body">
-  <div class="container">
-	   <div class="row">
-	    <h2>商品詳細</h2>	
+    <div class="container">
+	    <div class="row">
+            <div class="col-xs-4">
+                <h2 style="background-color: #dcdcdc; width: 80%; text-align: center;">商品詳細</h2>
 
-                    <div>
-                        <%= attachment_image_tag(@item, :item_image, :fill, 300, 300, fallback: "no-image-mini.jpg") %>
-                    </div>
-                    <div>
-                        <span>商品名</span>
+                <div style="margin: 40px 0">
+                    <%= attachment_image_tag(@item, :item_image, :fill, 300, 300, fallback: "no-image-mini.jpg") %>
+                </div>
+            </div>
+
+            <div class="col-xs-8">
+                <div style="margin: 100px 60px 60px 60px; font-size: 20px">
+                    <div style="margin-bottom: 20px">
+                        <strong style="margin-right: 30px">商品名</strong>
                         <%= @item.item_name %>
                     </div>
 
-                    <div>
-                        <span>商品説明</span>
+                    <div style="margin-bottom: 20px">
+                        <strong style="margin-right: 30px">商品説明</strong>
                         <%= @item.item_explanation %>
                     </div>
-                    <div>
-                         <span>税込価格（税抜価格）</span> 
+                    <div style="margin-bottom: 20px">
+                         <strong style="margin-right: 30px">税込価格（税抜価格）</strong> 
                         <% tax_include = @item.without_tax.to_i * 1.1  %>
                         <%= tax_include.round.to_s(:delimited)   %>
-                        (<%= (@item.without_tax.to_i).to_s(:delimited) %>)
+                        (<%= (@item.without_tax.to_i).to_s(:delimited) %>)　円
                     </div>
-                    <div>
-                        <span>販売ステータス</span>
+                    <div style="margin-bottom: 20px">
+                        <strong style="margin-right: 30px">販売ステータス</strong>
                         <%= @item.item_status_i18n %>
                     </div>
-                    <div>
-                        <span>おすすめ商品</span>
+                    <div style="margin-bottom: 10px">
+                        <strong style="margin-right: 30px">おすすめ商品</strong>
                         <% if @item.recomend == true %>
                         有効
                        <% elsif @item.recomend == false %>
@@ -35,9 +40,13 @@
                        <% end %>
                     </div>
 
-                     <%= link_to "編集する", edit_admins_item_path(@item.id), class: "btn btn-danger" %>
+                     <%= link_to "編集する", edit_admins_item_path(@item.id), class: "btn btn-primary" %>
 
                      <%= link_to "商品を削除する", admins_item_path(@item.id), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
-       </div>
-   </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+

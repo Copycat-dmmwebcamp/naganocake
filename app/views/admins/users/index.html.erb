@@ -1,32 +1,44 @@
-<h2>会員一覧</h2>
-<table>
- <thead>
-  <tr>
-   <th>会員ID</th>
-   <th>氏名</th>
-   <th>メールアドレス</th>
-   <th>ステータス</th>
-  </tr>
- </thead>
- <tbody>
-  <% @users.each do |user| %>
-  <tr>
-   <td><%= user.id %></td>
-   <td>
-   	   <%= link_to admins_user_path(user.id) do %>
-       <%= user.family_name_kanji %><%= user.first_name_kanji %>
-   	   <% end %>
-   </td>
-   <td><%= user.email %></td>
-   <td>
-   	   <% if user.user_status == true %>
-       <p>有効会員</p>
-       <% elsif user.user_status == false %>
-       <p>退会済み</p>
-       <% end %>
-   </td>
-  </tr>
-  <% end %>
-  <%= paginate @users %>
- </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="admin-title text-center col-md-3">
+      <h3>会員一覧</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <table class="admin-user-table">
+       <thead class="admin-user-title">
+        <tr>
+         <th class="admin-user-table-th">会員ID</th>
+         <th class="admin-user-table-th">氏名</th>
+         <th class="admin-user-table-th">メールアドレス</th>
+         <th class="admin-user-table-th">ステータス</th>
+        </tr>
+       </thead>
+       <tbody>
+        <% @users.each do |user| %>
+        <tr>
+         <td class="admin-user-table-td"><%= user.id %></td>
+         <td class="admin-user-table-td">
+         	   <%= link_to admins_user_path(user.id) do %>
+             <%= user.family_name_kanji %><%= user.first_name_kanji %>
+         	   <% end %>
+         </td>
+         <td class="admin-user-table-td"><%= user.email %></td>
+         <td class="admin-user-table-td">
+         	   <% if user.user_status == true %>
+             <p>有効会員</p>
+             <% elsif user.user_status == false %>
+             <p>退会済み</p>
+             <% end %>
+         </td>
+        </tr>
+        <% end %>
+        <%= paginate @users %>
+       </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
