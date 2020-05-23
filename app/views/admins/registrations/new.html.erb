@@ -1,29 +1,46 @@
-<h2>管理者ユーザー 新規登録</h2>
+<div class="container">
+  <div class="row">
+    <div class="admin-title text-center col-md-4">
+      <h3>管理者用ユーザー 新規登録</h3>
+    </div>
+  </div><br>
 
-<%= render "admins/shared/error_messages", resource: resource %>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= render "admins/shared/error_messages", resource: resource %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上で入力)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation, "パスワード(確認用)" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
 
-<%= render "admins/shared/links" %>
+
+        <div class="admin-field">
+          <%= f.label :email, "メールアドレス" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", :size => "60" %>
+        </div>
+
+        <div class="admin-field">
+          <%= f.label :password, "パスワード" %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %>文字以上で入力)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+        <div class="admin-field">
+          <%= f.label :password_confirmation, "パスワード(確認用)" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+        <%= render "admins/shared/links" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="actions-admin-new">
+        <%= f.submit "新規登録", class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+</div>

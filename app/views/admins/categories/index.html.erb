@@ -1,39 +1,61 @@
-<h2>ジャンル一覧・追加</h2>
+<div class="container">
+	<div class="row">
+	  <div class="admin-title text-center col-md-3">
+	    <h3>ジャンル一覧・追加</h3>
+	  </div>
+	</div>
 
-<%= render "admins/shared/error_messages", resource: @category %>
-<!-- resourcesが生成してくれたroutesだと単数形なのでurl:で複数形のroutesを指定する -->
-<%= form_for @category, url: admins_categories_path do |f| %>
-	ジャンル名
-    <%= f.text_field :name %>
-    <%= f.radio_button :category_status, :true, checked: true %>
-    <%= f.label :category_status_true, "有効" %>
-    <%= f.radio_button :category_status, :false %>
-    <%= f.label :category_status_false , "無効" %>
-    <%= f.submit '追加' %>
-<% end %>
+	<div class="row">
+	  <div class="col-md-6">
+	    <font color="red">
+	      <%= render "admins/shared/error_messages", resource: @category %>
+	    </font>
+	  </div>
+	</div>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>ジャンル</th>
-			<th>状態</th>
-			<th></th>
-		</tr>
-	</thead>
 
-	<tbody>
-		<% @categories.each do |category| %>
-		<tr>
-			<td><%= category.name %></td>
-			<td>
-				<% if category.category_status == true %>
-					有効
-				<% elsif category.category_status == false %>
-					無効
-				<% end %>
-			</td>
-			<td><%= link_to '編集する', edit_admins_category_path(category), class: "btn-sm btn-success edit_admins_category_#{category.id}" %></td>
-		</tr>
+	<div class="row categories-create">
+	  <div class="col-md-6">
+		<!-- resourcesが生成してくれたroutesだと単数形なのでurl:で複数形のroutesを指定する -->
+		<%= form_for @category, url: admins_categories_path do |f| %>
+			ジャンル　
+		    <%= f.text_field :name %>　
+		    <%= f.radio_button :category_status, :true, checked: true %>
+		    <%= f.label :category_status_true, "有効" %>　
+		    <%= f.radio_button :category_status, :false %>
+		    <%= f.label :category_status_false , "無効" %>　
+		    <%= f.submit '追加', class: "btn-lg btn-primary" %>
 		<% end %>
-	</tbody>
-</table>
+	  </div>
+	</div>
+
+	<div class="row categories-create">
+	  <div class="col-md-4">
+		<table class="categories-table">
+			<thead class="categories-table-title">
+				<tr>
+					<th col="2">ジャンル</th>
+					<th col="1">状態</th>
+					<th col="1"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @categories.each do |category| %>
+				<tr>
+					<td><%= category.name %></td>
+					<td>
+						<% if category.category_status == true %>
+							有効
+						<% elsif category.category_status == false %>
+							無効
+						<% end %>
+					</td>
+					<td align="middle"><%= link_to '編集する', edit_admins_category_path(category), class: "btn btn-primary edit_admins_category_#{category.id}" %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	  </div>
+	</div>
+</div>

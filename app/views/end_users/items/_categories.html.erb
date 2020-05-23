@@ -1,8 +1,14 @@
-<div>
-	<% categories.each do |category| %>
-	<% if category.category_status == true %>
-　　　　　　<%= link_to category.name, end_users_items_search_path(category_id: category.id) %>
-　　 <% end %>
-	<% end %>
-
+<div class="row">
+	<ul class="list-group" style="width: 80%; margin-left: 20px">
+	    <li class="list-group-item list-group-item-warning text-center" style="font-size: 20px">ジャンル検索</li>
+	    <li class="list-group-item text-center" style="font-size: 20px;">
+	    <% categories.each do |category| %>
+	    	<div class="genru" style="margin: 20px 0;">
+			    <% if category.category_status == true %>
+                      <%= link_to category.name, end_users_items_search_path(category_id: category.id) %>
+		　　     <% end %>
+		    </div>
+		<% end %>
+        </li>
+    </ul>
 </div>
