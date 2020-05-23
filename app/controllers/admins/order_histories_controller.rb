@@ -29,7 +29,7 @@ class Admins::OrderHistoriesController < ApplicationController
         order_item.save
        end
     end
-    redirect_to admins_order_history_path(@order.id)
+    #redirect_to admins_order_history_path(@order.id)
   end
 
   def update_product
@@ -54,7 +54,7 @@ class Admins::OrderHistoriesController < ApplicationController
           @order.save
        end
     end
-    redirect_to admins_order_history_path(@order.id)
+    #redirect_to admins_order_history_path(@order.id)
   end
 
   private
