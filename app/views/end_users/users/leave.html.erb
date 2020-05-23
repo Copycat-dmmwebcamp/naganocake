@@ -1,39 +1,31 @@
 
 <div class="container">
-<div class="col-xs-3"></div>
-<div class="col-xs-5">
-
-<table>
-<h2>本当に退会しますか？</h2>
-
-<p>退会すると、会員登録情報や<br>
-これまでの購入履歴が閲覧できなくなります。<br>
-退会する場合は、「退会する」をクリックしてください。</p>
-
-<div style="margin-bottom: 30px;">
-<div class="row">
+	<div class="col-xs-3"></div>
+	<div class="col-xs-5">
 
 
-<tr>
-<div class="col-xs-4">
-<%= link_to "退会しない", edit_end_users_user_path(current_end_user.id), class: "btn btn-primary" %>
-</div>
-<%= form_for(@user, url: end_users_user_path) do |f| %>
- <%= f.hidden_field :user_status, :value => false %>
-<div class="col-xs-2"></div>
-<div class="col-xs-4">
- <%= f.submit '退会する', data: { confirm: "退会しますか？"}, class: "btn btn-danger" %>
-</div>
-<% end %>
-</tr>
+		<h2>本当に退会しますか？</h2>
 
-</div>
-</div>
+		<p>退会すると、会員登録情報や<br>
+		これまでの購入履歴が閲覧できなくなります。<br>
+		退会する場合は、「退会する」をクリックしてください。</p>
 
-</table>
+		<div style="margin-top: 30px; margin-left: 30px;">
+			<div class="row">
 
+				<div class="col-xs-4">
+				<%= link_to "退会しない", edit_end_users_user_path(current_end_user.id), class: "btn btn-primary" %>
+				</div>
 
-</div>
+				<%= form_for(@user, url: end_users_user_path) do |f| %>
+				  <%= f.hidden_field :user_status, :value => false %>
+				  <%= f.submit '退会する', class: "btn btn-danger",data: {"turbolinks" => false}, data: {confirm: "削除しますか？"} %><!-- confirmは最後にもってくる -->
+				<% end %>
+
+			</div>
+		</div>
+
+	</div>
 </div>
 
 

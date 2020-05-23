@@ -4,8 +4,7 @@ class Admins::OrderHistoriesController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-  	@orders = Order.all.reverse_order
-    @orders = Order.page(params[:page]).per(10)
+  	@orders = Order.all.reverse_order.page(params[:page]).per(10)
   end
 
   def user_order

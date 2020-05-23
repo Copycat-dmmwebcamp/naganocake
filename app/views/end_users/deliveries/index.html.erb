@@ -16,8 +16,8 @@
 				<table>
 					<tbody>
 						<tr>
-							<td><%= f.label :name, "郵便番号(ハイフンなし)　" %></td>
-							<td><%= f.text_field :postal_code, autofocus: true, class: "postal_code", id: "address_zipcode" %></td>
+							<td style="padding-bottom: 10px"><%= f.label :name, "郵便番号(ハイフンなし)　" %></td>
+							<td style="padding-bottom: 10px;"><%= f.text_field :postal_code, autofocus: true, class: "postal_code", id: "address_zipcode" %></td>
 						</tr>
 
 						<tr>
@@ -27,21 +27,21 @@
 						<tr>
 							<td><%= f.label :name, "宛名　"  %></td>
 							<td><%= f.text_field :destination %></td>
-							<td><%= f.submit '登録する', class: "btn btn-success btn-lg" %></td>
+							<td><%= f.submit '登録する', class: "btn btn-success btn-lg mypage-button" %></td>
 						</tr>
 					</tbody>
 				</table>
 			<% end %>
 			<br>
 
-			<div style="width: 50% ">
+			<div style="width: 70% ">
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
 						<th>郵便番号</th>
 						<th>住所</th>
-						<th>宛名</th>
-						<th></th>
+						<th style="width: 100px;">宛名</th>
+						<th style="width: 200px;"></th>
 					</tr>
 				</thead>
 

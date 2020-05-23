@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row end-user-login-title">
-    <div class="end-user-title text-center col-md-3 col-md-offset-1">
+  <div class="row" style="margin-top: 100px;">
+    <div class="text-center col-md-3 col-md-offset-1" style="background-color: #eeeeee;">
       <h4>会員の方はこちらからログイン</h4>
     </div>
   </div>
@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  <div class="row end-user-login">
+  <div class="row" style="width: 100%; margin-top: 30px;">
     <div class="col-md-6 col-md-offset-3">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="end-user-field">
@@ -50,14 +50,14 @@
     </div>
   </div>
 
-  <div class="row end-user-login">
-    <div class="end-user-title text-center col-md-3 col-md-offset-1">
+  <div class="row" style="width: 100%; margin-top: 30px;">
+    <div class="text-center col-md-3 col-md-offset-1" style="background-color: #eeeeee;">
       <h4>登録がお済みでない方</h4>
     </div>
   </div>
   <div class="row">
     <div class="end-user-login col-md-6 col-md-offset-3">
-      <%= link_to "こちら", new_end_user_registration_path %>　から新規登録を行ってください。
+      <h4><%= link_to "こちら", new_end_user_registration_path %>　から新規登録を行ってください。</h4>
     </div>
   </div>
 
