@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+//= require jquery.jpostal
 
 $(document).ready(function () {
   $("#theTarget").skippr({
