@@ -32,18 +32,13 @@
                             ¥ <%= tax_include.round.to_s(:delimited)  %> <span style="font-size: 20px;">(税込)</span>
                             </span>
                         </div>
-                        <div>
-                            <% if  @item.item_status == 'soldout' %>
-                             売り切れ中です
-                            <% end %>
-                        </div>
                     </div>
 
                     <div>
                         <% if end_user_signed_in? %>
                           <% @cart_items = CartItem.where(end_user_id: current_end_user.id, item_id: @item.id) %>
                           <% if @item.item_status == 'soldout' %>
-                                <h5 style="font-size: 20px;">申し訳ありません　品切れ中です</h5>
+                                <h5>申し訳ありません　品切れ中です</h5>
                           <% elsif  @cart_items.empty? %>
                            <%= form_for(@cart_item, url:end_users_carts_path) do |f| %>
                               <%= f.hidden_field :item_id, value: @item.id %>
