@@ -1,35 +1,80 @@
-<h2><%= @user.family_name_kanji %><%= @user.first_name_kanji %>の会員情報編集</h2>
+<div class="container">
+<h2><%= @user.full_name_kanji %>の会員情報編集</h2>
 
 <%= render "admins/shared/error_messages", resource: @user %>
 
-<p>顧客ID</p>
-<%= @user.id %>
+<div class="row">
+ <div class="form-group">
+ <p class="col-xs-2">顧客ID</p>
+ <%= @user.id %>
+ </div>
+</div>
 
 <%= form_for(@user, url: admins_user_path) do |f| %>
 
-<p>氏名</p>
-<%= f.text_field :family_name_kanji %><%= f.text_field :first_name_kanji %>
+<div class="row">
+ <div class="form-group">
+  <p class="col-xs-2">氏名</p>
+  <%= f.text_field :family_name_kanji %> 
+  <%= f.text_field :first_name_kanji %>
+ </div>
+</div>
 
-<p>フリガナ</p>
-<%= f.text_field :family_name_kana %><%= f.text_field :first_name_kana %>
+<div class="row">
+ <div class="form-group">
+  <p class="col-xs-2">フリガナ</p>
+  <%= f.text_field :family_name_kana %> 
+  <%= f.text_field :first_name_kana %>
+ </div>
+</div>
 
-<p>郵便番号</p>
-<%= f.text_field :postal_code %>
+<div class="row">
+ <div class="form-group">
+  <p class="col-xs-2">郵便番号</p>
+  <%= f.text_field :postal_code %>
+ </div>
+</div>
 
-<p>住所</p>
-<%= f.text_field :address %>
+<div class="row">
+ <div class="form-group">
+  <p class="col-xs-2">住所</p>
+  <%= f.text_field :address %>
+ </div>
+</div>
 
-<p>電話番号</p>
-<%= f.text_field :phone_number %>
+<div class="row">
+ <div class="form-group">
+  <p class="col-xs-2">電話番号</p>
+  <%= f.text_field :phone_number %>
+ </div>
+</div>
 
-<p>メールアドレス</p>
-<%= f.text_field :email %>
+<div class="row">
+ <div class="form-group">
+  <p class="col-xs-2">メールアドレス</p>
+  <%= f.text_field :email %>
+ </div>
+</div>
 
+<div class="row">
+ <div class="form-group">
 <!-- ラジオボタン -->
-<%= f.radio_button :user_status, :true %>
-<%= f.label :user_status_true, "有効" %>
-<%= f.radio_button :user_status, :false %>
-<%= f.label :user_status_false, "退会済み" %>
+  <p class="col-xs-2">会員ステータス</p>
+  <%= f.radio_button :user_status, :true %>
+  <%= f.label :user_status_true, "有効" %>
+  <%= f.radio_button :user_status, :false %>
+  <%= f.label :user_status_false, "退会済み" %>
+ </div>
+</div>
 
-<%= f.submit '変更を保存する' %>
+<div class="row">
+ <div class="form-group col-xs-2">
+  <div style="margin-bottom: 60px;">
+   <%= f.submit '変更を保存する', class: "btn btn-primary" %>
+  </div>
+ </div>
+</div>
+
 <% end %>
+
+</div>

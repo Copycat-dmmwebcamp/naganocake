@@ -1,7 +1,16 @@
-<h2>管理者画面</h2>
-
-<div>
-	<h1>本日の注文件数
-		<%= link_to @orders.count, admins_order_histories_path %>件
-	</h1>
+<div class="container">
+ <div style="margin-bottom: 70px;">
+  <h2>管理者画面</h2>
+ </div>
+ <div class="row">
+  <div style="margin-bottom: 300px;">
+   <div class="col-xs-3">
+    <h2>本日の注文件数</h2>
+   </div>
+   <div class="col-xs-1"></div>
+   <div class="col-xs-1">
+    <h2><%= link_to @orders.count, admins_order_histories_path %>件</h2>
+   </div>
+  </div>
+ </div>
 </div>

@@ -1,59 +1,55 @@
 <div class="container">
- <h2>登録情報編集</h2>
+ <h3>登録情報編集</h3>
 
 <%= render "end_users/shared/error_messages", resource: @user %>
 
  <%= form_for(@user, url: end_users_user_path) do |f| %>
 
- <div class="row">
   <div class="form-group">
-   <p class="col-xs-3">氏名</p>
+   <p class="col-xs-2">氏名</p>
     <%= f.label :（性） %>
     <%= f.text_field :family_name_kanji %>
     <%= f.label :（名） %>
     <%= f.text_field :first_name_kanji %>
   </div>
- </div>
 
- <div class="row">
   <div class="form-group">
-   <p class="col-xs-3">フリガナ</p>
+   <p class="col-xs-2">フリガナ</p>
     <%= f.label :（セイ） %>
     <%= f.text_field :family_name_kana %>
     <%= f.label :（メイ） %>
     <%= f.text_field :first_name_kana %>
   </div>
- </div>
 
- <div class="row">
   <div class="form-group">
    <p class="col-xs-3">郵便番号（ハイフンなし）</p>
     <%= f.text_field :postal_code %>
   </div>
- </div>
 
- <div class="row">
   <div class="form-group">
    <p class="col-xs-3">住所</p>
     <%= f.text_field :address %>
   </div>
- </div>
 
- <div class="row">
   <div class="form-group">
    <p class="col-xs-3">電話番号（ハイフンなし）</p>
     <%= f.text_field :phone_number %>
   </div>
- </div>
 
- <div class="row">
   <div class="form-group">
    <p class="col-xs-3">メールアドレス</p>
     <%= f.text_field :email %>
   </div>
- </div>
 
- <%= f.submit '編集内容を保存する' %>
+  <div class="row">
+    <div style="margin-bottom: 60px;">
+    <div class="col-xs-5">
+     <div style="text-align : center;">
+      <%= f.submit '編集内容を保存する', class: "btn btn-primary" %>
+     </div>
+    </div>
  <% end %>
- <%= link_to "退会する", end_users_users_leave_path(current_end_user.id) %>
+   <%= link_to "退会する", end_users_users_leave_path(current_end_user.id), class: "btn btn-danger" %>
+   </div>
+  </div>
 </div>
