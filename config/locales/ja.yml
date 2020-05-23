@@ -35,13 +35,17 @@ ja:
       registrations:
         end_user:
           signed_up: "登録されていません"
-      sessions:
-        end_user:
-          signed_in: 'ログインしました'
-          signed_out: 'ログアウトしています'
-        admin:
-          signed_in: 'ログインしました'
-          signed_out: 'ログアウトしています'
+    sessions:
+      end_user:
+        signed_in: 'ログインしました'
+        signed_out: 'ログアウトしています'
+        already_signed_up: '既にログインしています'
+        already_signed_out: '既にログアウトしています'
+      admin:
+        signed_in: 'ログインしました'
+        signed_out: 'ログアウトしています'
+        already_signed_up: '既にログインしています'
+        already_signed_out: '既にログアウトしています'
 
   activerecord:
     errors:

@@ -1,3 +1,48 @@
 // Place all the styles related to the end_users/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.end-user-login-title{
+	margin-top: 100px;
+}
+
+.end-user-login {
+	width: 100%;
+	margin-top: 30px;
+}
+
+.end-user-field input[type="email"], .end-user-field input[type="password"] {
+	width: 420px;
+	height: 40px;
+	margin-bottom: 10px;
+}
+
+.end-user-login-b {
+	margin-left: 150px;
+}
+.end-user-login-b input[type="submit"] {
+	width:150px;
+}
+
+
+
+.end-user-title {
+	background-color: #eeeeee;
+}
+
+.end-user-new {
+	width: 100%;
+	margin-top:30px;
+}
+
+.input-form {
+	margin-bottom: 10px;
+}
+
+.end-user-regist-btn {
+	margin-left: 400px;
+}
+.end-user-regist-b input[type="submit"] {
+	width: 200px;
+}
+

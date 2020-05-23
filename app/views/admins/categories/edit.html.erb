@@ -1,13 +1,28 @@
-<h2>ジャンル編集</h2>
+<div class="container">
+	<div class="row">
+	  <div class="admin-title text-center col-md-3">
+	  	<h3>ジャンル編集</h3>
+	  </div>
+	</div>
 
-<%= render "admins/shared/error_messages", resource: @category %>
-<!-- updateのurl -->
-<%= form_for(@category, url:admins_category_path) do |f| %>
-	ジャンル
-    <%= f.text_field :name %>
-    <%= f.radio_button :category_status, :true %>
-    <%= f.label :category_status_true, "有効" %>
-    <%= f.radio_button :category_status, :false %>
-    <%= f.label :category_status_false, "無効" %>
-    <%= f.submit '変更を保存する' %>
-<% end %>
+	<div class="row">
+	  <div class="col-md-6">
+		<%= render "admins/shared/error_messages", resource: @category %>
+	  </div>
+	</div>
+
+	<div class="row categories-create">
+	  <div class="col-md-6">
+		<!-- updateのurl -->
+		<%= form_for(@category, url:admins_category_path) do |f| %>
+			ジャンル　
+		    <%= f.text_field :name %>　
+		    <%= f.radio_button :category_status, :true %>
+		    <%= f.label :category_status_true, "有効" %>　
+		    <%= f.radio_button :category_status, :false %>
+		    <%= f.label :category_status_false, "無効" %>　
+		    <%= f.submit '変更を保存する', class: "btn-lg btn-primary" %>
+		<% end %>
+	  </div>
+	</div>
+</div>
