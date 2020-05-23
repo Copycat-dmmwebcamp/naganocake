@@ -15,11 +15,12 @@ class EndUsers::CartsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     if @cart_item.update(cart_item_params)
-       redirect_to end_users_carts_path
+       #redirect_to end_users_carts_path
     else
        @cart_items = current_end_user.cart_items
        render 'index'
     end
+    @cart_items = current_end_user.cart_items
   end
 
   def destroy

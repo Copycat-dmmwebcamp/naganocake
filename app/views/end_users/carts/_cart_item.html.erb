@@ -1,0 +1,45 @@
+<% total = 0 %>
+
+          <table class="table table-striped">
+            <tr>
+              <th style="width: 300px;">商品名</th>
+              <th>単価(税込)</th>
+	            <th>数量</th>
+	            <th>小計</th>
+	            <th></th>
+            </tr>
+
+            <% cart_items.each do |cart_item| %>
+	        <tr>
+	          <td>
+	            <%= attachment_image_tag(cart_item.item, :item_image, :fill, 30, 30, allback: "no-image-mini.jpg") %>
+		        <%= cart_item.item.item_name %>
+	          </td>
+	          <td>
+                <%= (cart_item.item.without_tax.to_i * 1.1).round.to_s(:delimited) %>円
+	          </td>
+	          <td>
+                <%= form_with(model: [:end_users, cart_item], url:end_users_cart_path(cart_item.id)) do |f| %>
+                  <%= f.text_field :item_number, :size => "5px" %>
+                  <%= f.submit "変更", class: "btn btn-primary" %>
+                <% end %>
+	          </td>
+	          <td>
+                <%= (cart_item.item.without_tax.to_i * cart_item.item_number * 1.1).round.to_s(:delimited) %>円
+                <% total += cart_item.item.without_tax.to_i * cart_item.item_number %>
+	          </td>
+	          <td>
+	  	        <%= link_to '削除する', end_users_cart_path(cart_item), method: :delete, class: "btn btn-danger" %>
+	          </td>
+	        </tr>
+            <% end %>
+          </table>
+
+          <table class="table table-bordered right" style = "width:25%; float: right;">
+            <tr>
+              <td style = "height:30%; text-align : center;">合計金額</td>
+              <td style = "height:30%; text-align: right;">
+                <%= (total * 1.1).round.to_s(:delimited) %>円
+              </td>
+            </tr>
+          </table>
