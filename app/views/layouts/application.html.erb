@@ -20,9 +20,13 @@
           <span class="icon-bar"></span>
         </button>
         <% if end_user_signed_in? %>
-          <h1><%= link_to "Nagano Cake", root_path, class: 'rogo', data: {"turbolinks" => false} %></h1>
+          <%= link_to(("/"), :style=>"text-decoration: none;", data: {"turbolinks" => false}) do %>
+           <span class="rogo" style="color: white; text-decoration: none; font-size: 35px">Nagano Cake</span>
+         <% end %>
         <% else admin_signed_in? %>
-          <h1><%= link_to "Nagano Cake", admins_homes_top_path, class: 'rogo', data: {"turbolinks" => false} %></h1>
+          <%= link_to(("/"), :style=>"text-decoration: none;", data: {"turbolinks" => false}) do %>
+           <span class="rogo" style="color: white; text-decoration: none; font-size: 35px">Nagano Cake</span>
+         <% end %>
         <% end %>
       </div>
 
