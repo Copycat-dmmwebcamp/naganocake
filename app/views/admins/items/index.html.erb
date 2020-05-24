@@ -4,8 +4,10 @@
         <h3>商品一覧</h3>
       </div>
       <div class="col-md-1 col-md-offset-7 glyphicon-icon">
-         <%= link_to '', new_admins_item_path, class:"glyphicon glyphicon-plus-sign" %>
-      </div>
+          <%= link_to("items/new") do %>
+          <span class="glyphicon glyphicon-plus-sign" style="color: black;"></span>
+          <% end %>
+       </div>
     </div>
 
     <div class="row">
