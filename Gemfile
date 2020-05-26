@@ -83,3 +83,9 @@ gem 'kaminari','~> 1.1.1'
 gem 'font-awesome-rails'
 gem 'font-awesome-sass', '~> 5.4.1'
 
+# デプロイ用
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
+
