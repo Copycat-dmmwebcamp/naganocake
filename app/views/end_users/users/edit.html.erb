@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-2 text-center" style="background-color: #eeeeee">
+     <h3>登録情報編集</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-8">
+      <%= render "end_users/shared/error_messages", resource: @user %>
+    </div>
+  </div>
+
+
+  <%= form_for(@user, url: end_users_user_path) do |f| %>
+    <div class="row" style="margin-top: 30px;">
+      <div class="col-md-offset-2">
+        <table>
+          <tbody>
+            <tr class="end-user-signup-table thread1">
+              <td><label>氏名</label></td>
+              <td><%= f.label :（姓） %></td>
+              <td><%= f.text_field :family_name_kanji %></td>
+              <td><%= f.label :（名） %></td>
+              <td><%= f.text_field :first_name_kanji %></td>
+            </tr>
+            <tr class="end-user-signup-table">
+              <td><label>フリガナ</label></td>
+              <td><%= f.label :（セイ） %></td>
+              <td><%= f.text_field :family_name_kana %></td>
+              <td><%= f.label :（メイ） %></td>
+              <td><%= f.text_field :first_name_kana %></td>
+            </tr>
+            <tr class="end-user-signup-table">
+              <td><%= f.label :郵便番号（ハイフンなし） %></td>
+              <td></td>
+              <td><%= f.text_field :postal_code, class: "postal_code", id: "address_zipcode" %></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr class="end-user-signup-table">
+              <td><%= f.label :住所 %></td>
+              <td></td>
+              <td colspan="4"><%= f.text_field :address, :size => "50", class: "address", id:"address_name" %></td>
+            </tr>
+            <tr class="end-user-signup-table">
+              <td><%= f.label :電話番号（ハイフンなし） %></td>
+              <td></td>
+              <td><%= f.text_field :phone_number %></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr class="end-user-signup-table">
+              <td><%= f.label :メールアドレス %></td>
+              <td></td>
+              <td><%= f.text_field :email %></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 60px; margin-top: 30px;">
+      <div class="col-xs-2 col-xs-offset-3" style="text-align : center;">
+        <%= f.submit '編集内容を保存する', class: "btn btn-primary" %>
+      </div>
+      <div class="col-xs-3 col-xs-offset-1">
+        <%= link_to "退会する", end_users_users_leave_path(current_end_user.id), class: "btn btn-danger" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+

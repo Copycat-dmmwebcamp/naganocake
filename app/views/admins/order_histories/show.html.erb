@@ -1,0 +1,47 @@
+<div class="body">
+  <div class="container">
+     <div class="row">
+
+      <div class="text-left" style="margin-left: 120px; width: 140px; padding-bottom: 5px ">
+          <h4 style="background-color:#D3D3D3" class="text-center">注文履歴詳細</h4>
+      </div>
+
+      <div style="margin: 20px;">
+        <table>
+          <tbody>
+            <tr>
+              <th  height="30">購入者</th>
+              <td > <%= link_to admins_user_path(@order.end_user.id) do %>
+                <%= @order.end_user.full_name_kanji %>
+                <% end %>
+                </td>
+            </tr>
+            <tr>
+              <th height="50">配送先</th>
+              <td> <%= "〒" + (@order.postal_code.to_s.insert(3, "-")) + '　' +@order.delivery_address %><br> <%= @order.end_user.full_name_kanji %></td>
+            </tr>
+            <tr>
+              <th height="30">支払い方法</th>
+              <td><%= @order.payment_info_i18n %></td>
+            </tr>
+            <tr>
+              <th height="30" >注文ステータス</th>
+              <td>
+                <div id="order-status">
+                  <%= render 'admins/order_histories/order_status', order: @order %>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 注文テーブル/製作ステータス変更等 -->
+      <div id="production-status">
+        <%= render 'admins/order_histories/production_status', order_items: @order_items, order: @order %>
+      </div>
+
+
+    </div>
+  </div>
+</div>

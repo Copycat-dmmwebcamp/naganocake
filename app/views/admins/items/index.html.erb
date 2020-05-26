@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+      <div class="admin-title text-center col-md-3">
+        <h3>商品一覧</h3>
+      </div>
+      <div class="col-md-1 col-md-offset-7 glyphicon-icon">
+          <%= link_to("items/new") do %>
+          <span class="glyphicon glyphicon-plus-sign" style="color: black;"></span>
+          <% end %>
+       </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <table class="item-table">
+          <thead class="table-title">
+            <tr>
+               <th col="2" class="admin-table-th">商品ID</th>
+               <th col="3" class="admin-table-th">商品名</th>
+               <th col="1" class="admin-table-th">税抜価格</th>
+               <th col="2" class="admin-table-th">ジャンル</th>
+               <th col="2" class="admin-table-th">ステータス</th>
+               <th col="1" class="admin-table-th">おすすめ商品</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @items.each do |item| %>
+              <tr>
+                    <td class="admin-table-td"><%= item.id %></td>
+                    <td class="admin-table-td"><%= link_to item.item_name, admins_item_path(item.id) %></td>
+                    <td class="admin-table-td"><%= (item.without_tax.to_i).to_s(:delimited) %></td>
+                    <td class="admin-table-td"><%= Category.find(item.category_id).name %></td>
+                    <td class="admin-table-td"><%= item.item_status_i18n %></td>
+                    <td class="admin-table-td">
+                     <% if item.recomend == true %>
+                      有効
+                     <% elsif item.recomend == false %>
+                      無効
+                     <% end %>
+                    </td>
+              </tr>
+            <% end %>
+          </tbody>
+      　</table>
+    </div>
+  </div>
+    <%= paginate @items %>
+</div>

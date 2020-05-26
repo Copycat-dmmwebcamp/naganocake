@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-1"> </div>
+        <div class="col-xs-10">
+          <h3>ショッピングカート</h3>
+
+          <%= render "end_users/shared/error_messages", resource: @cart_item %>
+
+          <div style="text-align : right; margin-bottom: 10px;">
+            <%= link_to "カートを空にする", end_users_carts_destroy_all_path, "data-confirm" => "本当に消しますか？", class: "btn btn-danger" %>
+          </div>
+
+          <div id="cart">
+            <%= render "end_users/carts/cart_item", cart_items: @cart_items %>
+          </div>
+
+          <%= link_to "買い物を続ける", root_path, class: "btn btn-primary", :style=> "margin: 10px;", data: {"turbolinks" => false} %>
+
+          <% if @cart_items.count != 0 %>
+          <div style="text-align : center; margin: 20px;"> 
+            <%= link_to "情報入力に進む", new_end_users_order_path, class: "btn btn-success", :style=> "width:40%;", data: {"turbolinks" => false} %>
+          </div>
+          <% end %>
+        </div>
+    </div>
+</div>
+

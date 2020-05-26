@@ -1,0 +1,86 @@
+<div class="container">
+ <div class="row">
+  <div class="col-xs-1"></div>
+  <div class="col-xs-2 text-center" style="background-color: #eeeeee">
+   <h3>マイページ</h3>
+  </div>
+ </div>
+
+ <div style="padding-bottom: 10px; margin-top: 30px;">
+ <table>
+  <tr>
+   <th>
+    <div style="padding-right: 20px;">
+	   <h3><strong>登録情報</strong></h3>
+    </div>
+   </th>
+   <td>
+	 <div style="padding-right: 10px;">
+		<%= link_to "編集する", edit_end_users_user_path(current_end_user.id), class: "btn btn-primary" %>
+	</div>
+   </td>
+   <td><button type="button" class="btn btn-primary btn-none" style="width: 200px;">パスワードを変更する</button></td>
+  </tr>
+ </table>
+</div>
+
+<div class="row">
+ <div class="col-xs-7">
+	<table class="table table-bordered end-user-mypage-table">
+
+		<tr>
+			 <th>氏名</th>
+			 <td><%= current_end_user.family_name_kanji %> <%= current_end_user.first_name_kanji %></td>
+		</tr>
+
+		<tr>
+			 <th>カナ</th>
+       <td><%= current_end_user.family_name_kana %> <%= current_end_user.first_name_kana %></td>
+    </tr>
+
+    <tr>
+			 <th>郵便番号</th>
+			 <td><%= current_end_user.postal_code %></td>
+	  </tr>
+
+		<tr>
+			 <th>住所</th>
+			 <td><%= current_end_user.address %></td>
+		</tr>
+
+		<tr>
+			 <th>電話番号</th>
+			 <td><%= current_end_user.phone_number %></td>
+		</tr>
+
+		<tr>
+			 <th>メールアドレス</th>
+			 <td><%= current_end_user.email %></td>
+		</tr>
+
+    </table>
+ </div>
+</div>
+
+<table style="margin-bottom: 30px;">
+ <tr>
+  <th><h4><strong>配送先</strong></h4></th>
+  <td>
+   <div style="padding-left: 20px;">
+  	<%= link_to "一覧を見る", end_users_deliveries_path(current_end_user.id), class: "mypage-button btn btn-primary" %>
+    </div>
+   </td>
+ </tr>
+
+ <div style="margin-top: 20px;">
+ <tr>
+  <th><h4><strong>注文履歴</strong></h4></th>
+  <td>
+   <div style="padding-left: 20px;">
+   <%= link_to "一覧を見る", end_users_orders_history_path, class: "mypage-button btn btn-primary" %>
+   </div>
+  </td>
+ </tr>
+ </div>
+</table>
+</div>

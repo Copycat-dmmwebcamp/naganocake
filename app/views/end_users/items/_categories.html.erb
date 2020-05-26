@@ -1,0 +1,31 @@
+<div class="row">
+	<ul class="list-group" style="width: 60%; margin-left: 20px;">
+	    <li style="font-size: 20px; color: black; list-style: none;border-bottom: solid 1px; margin-bottom: 20px">ジャンルから探す</li>
+	    <% categories.each do |category| %>
+	    	<div style="margin: 5px 0;">
+			    <% if category.category_status == true %>
+			    <li style="font-size: 16px; margin-left: 20px">
+                      <%= link_to category.name, end_users_items_search_path(category_id: category.id), :style=>"text-decoration: none; color: black;"  %>
+                    <% end %>
+                </li>
+		    </div>
+		<% end %>
+    </ul>
+</div>
+<div>
+    <ul class="list-group" style="width: 60%; margin-left: 10px;">
+      <li style="font-size: 20px; color: black; list-style: none;border-bottom: solid 1px; margin-bottom: 20px"> SNS Link</li>
+    <%= link_to(("/"), data: {"turbolinks" => false}) do %>
+      <span class="fa fa-instagram fa-4x" aria-hidden="true" style="color: #AAAAAA; text-decoration: none; margin-right: 20px;"></span>
+    <% end %>
+    <%= link_to(("/"), data: {"turbolinks" => false}) do %>
+      <span class="fa fa-twitter fa-4x" aria-hidden="true" style="color: #AAAAAA; text-decoration: none; margin-right: 20px;"></span>
+    <% end %>
+    <%= link_to(("/"), data: {"turbolinks" => false}) do %>
+      <span class="fa fa-facebook-official fa-4x" aria-hidden="true" style="color: #AAAAAA; text-decoration: none; margin-right: 20px;"></span>
+      <% end %>
+    <%= link_to(("/"), data: {"turbolinks" => false}) do %>
+      <span class="fab fa-line fa-4x" aria-hidden="true" style="color: #CCCCCC; text-decoration: none; margin-right: 20px;"></span>
+      <% end %>
+    </ul>
+</div>

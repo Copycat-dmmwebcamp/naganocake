@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-4" style="background-color: #eeeeee;">
+        <h2><%= @user.full_name_kanji %>の会員詳細</h2>
+      </div>
+    </div>
+
+ <div class="form-group" style="margin-top: 30px;">
+  <p class="col-xs-2">顧客ID</p>
+  <%= @user.id %>
+  <% if @user.user_status == true %>
+    有効会員
+  <% elsif @user.user_status == false %>
+    退会済み
+  <% end %>
+ </div>
+
+ <div class="form-group">
+  <p class="col-xs-2">氏名</p>
+  <%= @user.family_name_kanji %><%= @user.first_name_kanji %>
+ </div>
+
+ <div class="form-group">
+  <p class="col-xs-2">フリガナ</p>
+  <%= @user.family_name_kana %><%= @user.first_name_kana %>
+ </div>
+
+ <div class="form-group">
+  <p class="col-xs-2">郵便番号</p>
+  <%= @user.postal_code %>
+ </div>
+
+ <div class="form-group">
+  <p class="col-xs-2">住所</p>
+  <%= @user.address %>
+ </div>
+
+ <div class="form-group">
+  <p class="col-xs-2">電話番号</p>
+  <%= @user.phone_number %>
+ </div>
+
+ <div class="form-group">
+  <p class="col-xs-2">メールアドレス</p>
+  <%= @user.email %>
+ </div>
+
+ <div class="form-group">
+  <%= link_to "編集する", edit_admins_user_path(@user.id), class: "btn btn-primary" %>
+  <%= link_to "注文履歴一覧を見る",  admins_user_order_path(@user.id), class: "btn btn-primary" %>
+ </div>
+
+</div>

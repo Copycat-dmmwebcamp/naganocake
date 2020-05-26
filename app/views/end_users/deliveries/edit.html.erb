@@ -1,0 +1,40 @@
+<div class="body">
+  <div class="container">
+       <div class="row">
+
+			<div class="text-left" style="margin-left: 120px; width: 140px; padding-bottom: 5px ">
+          <h4 style="background-color:#D3D3D3" class="text-center">配送先編集</h4>
+        </div>
+        	<div class="col-sm-1">
+        	</div>
+        	<div class="col-sm-11">
+			<%= render "end_users/shared/error_messages", resource: @delivery_place %>
+
+			<%= form_for @delivery_place, url: end_users_delivery_path do |f| %>
+				<table>
+					<tbody>
+						<tr>
+							<td><%= f.label :name, "郵便番号(ハイフンなし)" %></td>
+							<td><%= f.text_field :postal_code, autofocus: true, class: "postal_code", id: "address_zipcode" %></td>
+						</tr>
+						<tr>
+							<td><%= f.label :name, "住所"  %></td>
+							<td><%= f.text_field :address, :size=>"60", class: "address", id:"address_name" %></td>
+						</tr>
+						<tr>
+							<td><%= f.label :name, "宛名"  %></td>
+							<td><%= f.text_field :destination %></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td><%= f.submit '登録する', class: "btn btn-success btn-lg" %></td>
+						</tr>
+					</tbody>
+				</table>
+			<% end %>
+
+		</div>
+       </div>
+   </div>
+</div>     

@@ -1,0 +1,76 @@
+<div class="body">
+    <div class="container">
+        <div class="row">
+
+       		  <div class="col-xs-3">
+
+                <div class="main-visual-text">
+                    <div>ようこそ、NaganoCakeへ！<br>
+                      このサイトは、ケーキ販売のECサイトになります。<br>
+                      会員でない方も商品の閲覧はできますが、<br>
+                      購入には会員登録が必要になります。
+                    </div>
+                </div>
+
+  				     <%= render "end_users/items/categories", categories: @categories %>
+  			    </div>
+
+            <div class="col-xs-9">
+            <div id="container">
+              <div id="theTarget">
+                <div class="image1"></div>
+                <div class="image2"></div>
+                <div class="image3"></div>
+                <div class="image4"></div>
+                <div class="image5"></div>
+              </div>
+            </div>
+                <h3>おすすめ商品</h3>
+                <div class="item-picup" style="border-top: solid 1px">
+
+                <% count = 0 %>
+                <% @items.each do |item| %>
+                <% if count < 4 %>
+                    <div class = "A">
+              				  <span class = "imagWrap">
+                            <div>
+                  			    <%= link_to end_users_item_path(item.id) do %>
+                                <%= attachment_image_tag(item, :item_image, :fill, 150, 150, fallback: "no-image-mini.jpg") %>
+                            <% end %>
+                            </div>
+                        </span>
+                        <br>
+              				  <%= link_to item.item_name, end_users_item_path(item.id), :style=>"text-decoration: none; color: black;" %><br>
+              				  <% tax_include = item.without_tax.to_i * 1.1  %>
+              				  ¥ <%= tax_include.round.to_s(:delimited) %>
+                  			<% count = count + 1 %>
+                        <% end %>
+                    </div>
+                    <% end %>
+              	</div>
+                </div>
+
+                <div class="text-right" style="margin-bottom: 30px;">
+                <%= link_to "もっと見る>", end_users_items_path, :style=>"text-decoration: none; color: black;" %>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div style="background-color:#dcdcdc; height: 150px; width: auto;border-top: solid 2px">
+                <div class="col-xs-2">
+                  
+                </div>
+                <div class="col-xs-4">
+                  <h4>配送・送料について</h4>
+                  <p>・友人や家族へのプレゼントなど住所を指定した配送も可能です</p>
+                  <p>・送料は全国一律800円です</p>
+                </div>
+                <div class="col-xs-4">
+                <h4>お支払方法について</h4>
+                <p>・支払い方法はクレジットカード、銀行振り込みから選択できます</p>
+                </div>
+              </div>
+        </div>
+</div>
+
+

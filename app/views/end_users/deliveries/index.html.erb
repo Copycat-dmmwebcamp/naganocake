@@ -1,0 +1,67 @@
+<div class="body">
+  <div class="container">
+       <div class="row">
+
+		<div class="text-left" style="margin-left: 120px; width: 140px; padding-bottom: 5px ">
+          <h4 style="background-color:#D3D3D3" class="text-center">配送先登録/一覧</h4>
+        </div>
+        <div class="col-sm-1">
+       	</div>
+        <div class="col-sm-11">
+			<h5><%= notice %></h5>
+
+			<%= render "end_users/shared/error_messages", resource: @delivery_place %>
+
+			<%= form_for @delivery_place, url: end_users_deliveries_path do |f| %>
+				<table>
+					<tbody>
+						<tr>
+							<td style="padding-bottom: 10px"><%= f.label :name, "郵便番号(ハイフンなし)　" %></td>
+							<td style="padding-bottom: 10px;"><%= f.text_field :postal_code, autofocus: true, class: "postal_code", id: "address_zipcode" %></td>
+						</tr>
+
+						<tr>
+							<td><%= f.label :name, "住所　"  %></td>
+							<td><%= f.text_field :address, :size=>"60", class: "address", id:"address_name" %></td>
+						</tr>
+						<tr>
+							<td><%= f.label :name, "宛名　"  %></td>
+							<td><%= f.text_field :destination %></td>
+							<td><%= f.submit '登録する', class: "btn btn-success btn-lg mypage-button" %></td>
+						</tr>
+					</tbody>
+				</table>
+			<% end %>
+			<br>
+
+			<div style="width: 70% ">
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>郵便番号</th>
+						<th>住所</th>
+						<th style="width: 100px;">宛名</th>
+						<th style="width: 200px;"></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @delivery_places.each do |delivery_place| %>
+					<!-- ログインユーザの一致を確認する -->
+						<% if delivery_place.end_user_id == current_end_user.id %>
+							<tr>
+								<td><%= delivery_place.postal_code %></td>
+								<td><%= delivery_place.address %></td>
+								<td><%= delivery_place.destination %> </td>
+								<td>　<%= link_to '編集する', edit_end_users_delivery_path(delivery_place), class: "btn btn-primary btn-sm edit_end_users_delivery_#{delivery_place.id}" %>　
+									<%= link_to '削除する', end_users_delivery_path(delivery_place), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger btn-sm destroy_end_users_delivery_#{delivery_place.id}" %></td>
+							</tr>
+						<% end %>
+					<% end %>
+				</tbody>
+			</table>
+			</div>
+      	 </div>
+   		</div>
+   </div>
+</div>  

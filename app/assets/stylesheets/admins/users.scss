@@ -1,0 +1,46 @@
+// Place all the styles related to the admins/users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin-field input[type="email"], .admin-field input[type="password"] {
+	width: 430px;
+	height: 40px;
+	margin-bottom: 10px;
+}
+
+.admin-field input[type="submit"] {
+    width: 100px;
+    height: 40px;
+}
+
+.actions-admin-new {
+	margin-left: 470px;
+	margin-top: 10px;
+}
+
+
+.admin-title {
+	background-color: #eeeeee;
+}
+.admin-user-login-title{
+	margin-top: 100px;
+}
+
+.admin-user-table {
+	width: 100%;
+	margin-top: 30px;
+	border-top: solid 1px;
+}
+
+.admin-user-title {
+	background-color: #eeeeee;
+}
+
+.admin-user-table-th, .admin-user-table-td {
+	border-bottom: solid 1px;
+	height: 50px;
+}
+
+.admin-user-table tr td:nth-child(2){
+	width: 200px;
+}

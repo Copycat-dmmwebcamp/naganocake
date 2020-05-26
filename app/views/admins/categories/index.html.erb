@@ -1,0 +1,71 @@
+<div class="container">
+	<div class="row">
+	  <div class="admin-title text-center col-md-3" style="background-color: #eeeeee;">
+	    <h3>ジャンル一覧・追加</h3>
+	  </div>
+	</div>
+
+	<div class="row">
+	  <div class="col-md-6">
+	    <font color="red">
+	      <%= render "admins/shared/error_messages", resource: @category %>
+	    </font>
+	  </div>
+	</div>
+
+
+	<div class="row categories-create" style="margin-top: 30px;">
+	  <div class="col-md-6">
+		<!-- resourcesが生成してくれたroutesだと単数形なのでurl:で複数形のroutesを指定する -->
+		<%= form_for @category, url: admins_categories_path do |f| %>
+			<table>
+				<tbody>
+					<tr>
+						<td><label>ジャンル</label></td>
+						<td style="padding-left: 10px;"><%= f.text_field :name %></td>
+						<td style="padding-left: 10px;">
+							<%= f.radio_button :category_status, :true, checked: true %>
+							<%= f.label :category_status_true, "有効" %>
+						</td>
+						<td style="padding-left: 10px;">
+							<%= f.radio_button :category_status, :false %>
+							<%= f.label :category_status_false , "無効" %>
+						</td>
+						<td style="padding-left: 10px;"><%= f.submit '追加', class: "btn-lg btn-primary" %></td>
+					</tr>
+				</tbody>
+			</table>
+		<% end %>
+	  </div>
+	</div>
+
+	<div class="row categories-create" style="margin-top: 50px;">
+	  <div class="col-md-4">
+		<table class="categories-table">
+			<thead class="categories-table-title">
+				<tr>
+					<th col="2">ジャンル</th>
+					<th col="1">状態</th>
+					<th col="1"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @categories.each do |category| %>
+				<tr>
+					<td><%= category.name %></td>
+					<td>
+						<% if category.category_status == true %>
+							有効
+						<% elsif category.category_status == false %>
+							無効
+						<% end %>
+					</td>
+					<td align="middle"><%= link_to '編集する', edit_admins_category_path(category), class: "btn btn-primary edit_admins_category_#{category.id}" %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	  </div>
+	</div>
+</div>
