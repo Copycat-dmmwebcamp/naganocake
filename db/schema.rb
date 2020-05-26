@@ -30,8 +30,6 @@ ActiveRecord::Schema.define(version: 2020_05_17_070702) do
     t.integer "item_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["end_user_id"], name: "index_cart_items_on_end_user_id"
-    t.index ["item_id"], name: "index_cart_items_on_item_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -48,7 +46,6 @@ ActiveRecord::Schema.define(version: 2020_05_17_070702) do
     t.string "destination"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["end_user_id"], name: "index_delivery_places_on_end_user_id"
   end
 
   create_table "end_users", force: :cascade do |t|
@@ -72,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_05_17_070702) do
   end
 
   create_table "items", force: :cascade do |t|
+    t.integer "category_id"
     t.string "item_name"
     t.string "without_tax"
     t.text "item_explanation"
@@ -79,9 +77,7 @@ ActiveRecord::Schema.define(version: 2020_05_17_070702) do
     t.boolean "recomend", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
     t.string "item_image_id"
-    t.index ["category_id"], name: "index_items_on_category_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -92,11 +88,10 @@ ActiveRecord::Schema.define(version: 2020_05_17_070702) do
     t.integer "item_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_order_items_on_item_id"
-    t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|
+    t.integer "end_user_id"
     t.integer "payment_info"
     t.string "destination"
     t.string "delivery_address"
@@ -106,8 +101,6 @@ ActiveRecord::Schema.define(version: 2020_05_17_070702) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "order_status", limit: 5
-    t.integer "end_user_id"
-    t.index ["end_user_id"], name: "index_orders_on_end_user_id"
   end
 
 end
