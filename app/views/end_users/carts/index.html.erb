@@ -18,7 +18,7 @@
 
           <% if @cart_items.count != 0 %>
           <div style="text-align : center; margin: 20px;"> 
-            <%= link_to "情報入力に進む", new_end_users_order_path, class: "btn btn-success", :style=> "width:40%;" %>
+            <%= link_to "情報入力に進む", new_end_users_order_path, class: "btn btn-success", :style=> "width:40%;", data: {"turbolinks" => false} %>
           </div>
           <% end %>
         </div>

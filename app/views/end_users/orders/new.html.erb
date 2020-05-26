@@ -40,11 +40,11 @@
                     <thead>
                       <tr>
                         <th>郵便番号（ハイフンなし）</th>
-                        <td><%= f.text_field :postal_code %></td>
+                        <td><%= f.text_field :postal_code, class: "postal_code", id: "address_zipcode" %></td>
                       </tr>
                       <tr>
                         <th>住所</th>
-                        <td><%= f.text_field :delivery_address, :size => "50" %></td>
+                        <td><%= f.text_field :delivery_address, :size => "50", class: "address", id:"address_name" %></td>
                       </tr>
                       <tr>
                         <th>宛名</th>
