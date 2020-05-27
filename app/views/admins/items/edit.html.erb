@@ -4,7 +4,7 @@
             <%= form_for(@item, url: admins_item_path) do |f| %>
             <div class="col-xs-4">
                 <h2 style="background-color: #dcdcdc; width: 80%; text-align: center;">商品新規登録</h2>
-                    <%= attachment_image_tag @item, :item_image, :limit, 300, 300, fallback: "no-image-mini.jpg",size: "300x300",id:"prev_img" %>
+                    <%= attachment_image_tag @item, :item_image, :limit, 300, 300, fallback: "NO-IMAGE.jpg",size: "300x300",id:"prev_img" %>
 
                     <%= render "admins/shared/error_messages", resource: @item %>
 
